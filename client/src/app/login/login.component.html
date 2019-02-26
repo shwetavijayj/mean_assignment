@@ -1,0 +1,30 @@
+<div class="container col-sm-4">
+  <form name="loginform" className="loginform">
+    <div class="form-group">
+      <table class="table table-bordered">
+        <tbody>
+          <tr></tr>
+          <tr>
+            <td colspan="2"><small>Username</small>
+              <input type="text" #username="ngModel" name="username" class="form-control" required [class.is-invalid]="username.invalid && username.touched"
+                ngModel />
+              <small class="text-danger" [class.d-none]="username.valid || username.untouched"><b>user name is
+                  required.</b></small>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <small>Password</small>
+              <input type="text" #password="ngModel" name="password" class="form-control" required [class.is-invalid]="password.invalid && password.touched"
+                ngModel />
+            </td>
+          </tr>
+          <tr>
+            <td><button type="submit" class="btn btn-warning">Clear</button></td>
+            <td><button type="submit" class="btn btn-success" [disabled]="!userForm.valid">Login</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,132 @@
+<div class="container">
+  <form name="createUserform" className="createUserform">
+    <div class="form-group form-style-5">
+      <table>
+        <tbody>
+          <tr>
+            <td colspan=3>
+              <legend><span class="number">Name</span> Personal Info</legend>
+            </td>
+          </tr>
+          <td>
+            <input type="text" #firstname="ngModel" class="form-control" name="firstname" placeholder="First Name"
+              pattern="[A-Za-z]+" required [class.is-invalid]="firstname.invalid && firstname.touched" ngModel />
+            <small class="text-danger" [class.d-none]="firstname.valid || firstname.untouched"><b>First name is
+                required.</b></small>
+          </td>
+          <td>
+            <input type="text" #middlename="ngModel" class="form-control" name="middlename" placeholder="Middle Name"
+              pattern="[A-Za-z]+" required [class.is-invalid]="middlename.invalid && middlename.touched" ngModel />
+            <small class="text-danger" [class.d-none]="middlename.valid || middlename.untouched"><b>Middle name is
+                required.</b></small>
+          </td>
+          <td>
+            <input type="text" #lastname="ngModel" name="lastname" class="form-control" placeholder="Last Name" pattern="[A-Za-z]+"
+              required [class.is-invalid]="lastname.invalid && lastname.touched" ngModel />
+            <small class="text-danger" [class.d-none]="lastname.valid || lastname.untouched"><b>Last name is
+                required.</b></small>
+          </td>
+          <tr>
+            <td><input type="text" #gender="ngModel" name="gender" class="form-control" placeholder="Gender" required
+                [class.is-invalid]="gender.invalid && gender.touched" ngModel />
+              <small class="text-danger" [class.d-none]="gender.valid || gender.untouched"><b>Gender Field is
+                  required.</b></small>
+            </td>
+            <td><input type="date" #dateofbirth="ngModel" name="dateofbirth" class="form-control" placeholder="Date of Birth"
+                required [class.is-invalid]="dateofbirth.invalid && dateofbirth.touched" ngModel>
+              <small class="text-danger" [class.d-none]="dateofbirth.valid || dateofbirth.untouched"><b>Date of Birth
+                  is
+                  required.</b></small>
+            </td>
+            <td><input type="text" #age="ngModel" name="age" class="form-control" placeholder="Age" ngModel /></td>
+          </tr>
+          <tr>
+            <td colspan=3>
+              <legend><span class="number">Address</span> Contact Info</legend>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3"><input type="text" #addr1="ngModel" name="addr1" class="form-control" placeholder="Address Line 1"
+                required [class.is-invalid]="addr1.invalid && addr1.touched" ngModel />
+              <small class="text-danger" [class.d-none]="addr1.valid || addr1.untouched"><b>Full address is required</b></small>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3"><input type="text" #addr2="ngModel" name="addr2" class="form-control" placeholder="Address Line 2"
+                required [class.is-invalid]="addr2.invalid && addr2.touched" ngModel />
+              <small class="text-danger" [class.d-none]="addr2.valid || addr2.untouched"><b>Full address is required</b></small>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3"><input type="text" #addr3="ngModel" name="addr3" class="form-control" placeholder="Address Line 3"
+                required [class.is-invalid]="addr3.invalid && addr3.touched" ngModel />
+              <small class="text-danger" [class.d-none]="addr3.valid || addr3.untouched"><b>Full address is required</b></small>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3"><input type="text" #city="ngModel" name="city" class="form-control" placeholder="City"
+                pattern="[A-Za-z]+" required [class.is-invalid]="city.invalid && city.touched" ngModel />
+              <small class="text-danger" [class.d-none]="city.valid || city.untouched"><b>City name is
+                  required and must contain alphabets only.</b></small>
+            </td>
+          </tr>
+          <tr>
+            <td colspan=2><input type="text" #pincode="ngModel" name="pincode" class="form-control" placeholder="Pincode"
+                pattern="[0-9]+" maxlength="6" required [class.is-invalid]="pincode.invalid && pincode.touched" ngModel />
+              <small class="text-danger" [class.d-none]="pincode.valid || pincode.untouched"><b>Pincode must contain
+                  digits only.</b></small>
+            </td>
+            <td colspan=1><input type="text" #state="ngModel" name="state" class="form-control" placeholder="State"
+                required [class.is-invalid]="state.invalid && state.touched" ngModel />
+              <small class="text-danger" [class.d-none]="state.valid || state.untouched"><b>State is
+                  required.</b></small>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><input type="text" #phone="ngModel" name="phone" placeholder="Phone" class="form-control"
+                pattern="[0-9]+" [class.is-invalid]="phone.invalid && phone.touched" ngModel />
+              <small class="text-danger" [class.d-none]="phone.valid || phone.untouched"><b>Phone number must contain
+                  digits only.</b></small>
+            </td>
+            <td><input type="text" name="mobile" #mobile="ngModel" placeholder="Mobile" class="form-control" required
+                maxlength="10" pattern="^\d{10}$" [class.is-invalid]="mobile.invalid && mobile.touched" ngModel />
+              <small class="text-danger" [class.d-none]="mobile.valid || mobile.untouched"><b>Mobile number must
+                  contain digits only.</b></small>
+            </td>
+          </tr>
+          <tr>
+            <td colspan=3>
+              <legend><span class="number">Other</span> Other Info</legend>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><input type="text" #physicaldisability="ngModel" name="physicaldisability" class="form-control"
+                placeholder="Physical disablity" ngModel />
+
+            </td>
+            <td><input type="text" #maritalstatus="ngModel" name="maritalstatus" placeholder="Marital Status" class="form-control"
+                ngModel />
+
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><input type=text name="edustatus" #edustatus="ngModel" placeholder="Educational Status"
+                class="form-control" required [class.is-invalid]="edustatus.invalid && edustatus.touched" ngModel />
+              <small class="text-danger" [class.d-none]="edustatus.valid || edustatus.untouched"><b>Middle name is
+                  required.</b></small>
+            </td>
+            <td colspan="1"><input type="text" name="birthsign" #birthsign="ngModel" placeholder="Birth Sign" class="form-control"
+                required [class.is-invalid]="birthsign.invalid && birthsign.touched" ngModel />
+              <small class="text-danger" [class.d-none]="birthsign.valid || birthsign.untouched"><b>Middle name is
+                  required.</b></small>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><button type="submit">Clear</button></td>
+            <td><button type="submit" [disabled]="!userForm.valid">Create Role</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </form>
+</div>
