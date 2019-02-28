@@ -1,27 +1,25 @@
 <div class="container col-sm-4">
-  <form name="loginform" className="loginform">
+  <form name="loginform" [formGroup]="loginform">
     <div class="form-group">
       <table class="table table-bordered">
         <tbody>
-          <tr></tr>
           <tr>
             <td colspan="2"><small>Username</small>
-              <input type="text" #username="ngModel" name="username" class="form-control" required [class.is-invalid]="username.invalid && username.touched"
-                ngModel />
-              <small class="text-danger" [class.d-none]="username.valid || username.untouched"><b>user name is
-                  required.</b></small>
+              <input type="text" name="username" formControlName="username" class="form-control" required />
+              <!-- yet to implement -->
+
+
             </td>
           </tr>
           <tr>
             <td colspan="2">
               <small>Password</small>
-              <input type="text" #password="ngModel" name="password" class="form-control" required [class.is-invalid]="password.invalid && password.touched"
-                ngModel />
+              <input type="text" name="password" formControlName="password" class="form-control" required />
             </td>
           </tr>
           <tr>
             <td><button type="submit" class="btn btn-warning">Clear</button></td>
-            <td><button type="submit" class="btn btn-success" [disabled]="!userForm.valid">Login</button></td>
+            <td><button type="submit" class="btn btn-success" (click)="login()">Login</button></td>
           </tr>
         </tbody>
       </table>

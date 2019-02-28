@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeadersComponent } from './headers/headers.component';
@@ -11,6 +11,7 @@ import { PersonalInfoDisplayComponent } from './personal-info-display/personal-i
 import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateRoleComponent } from './create-role/create-role.component';
 import { HeaderUserComponent } from './header-user/header-user.component';
+import { LoginService } from './services/login.service';
 
 @NgModule({
   declarations: [
@@ -25,11 +26,12 @@ import { HeaderUserComponent } from './header-user/header-user.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

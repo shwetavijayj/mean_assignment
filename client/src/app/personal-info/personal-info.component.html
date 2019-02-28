@@ -27,10 +27,13 @@
                 required.</b></small>
           </td>
           <tr>
-            <td><input type="text" #gender="ngModel" name="gender" class="form-control" placeholder="Gender" required
-                [class.is-invalid]="gender.invalid && gender.touched" ngModel />
-              <small class="text-danger" [class.d-none]="gender.valid || gender.untouched"><b>Gender Field is
-                  required.</b></small>
+            <td>
+              <select #gender="ngModel" name="gender" class="form-control" ngModel>
+                <option value="" selected disabled hidden>Select Gender</option>
+                <option *ngFor="let val of Gender">
+                  {{val}}
+                </option>
+              </select>
             </td>
             <td><input type="date" #dateofbirth="ngModel" name="dateofbirth" class="form-control" placeholder="Date of Birth"
                 required [class.is-invalid]="dateofbirth.invalid && dateofbirth.touched" ngModel>
@@ -71,16 +74,21 @@
             </td>
           </tr>
           <tr>
-            <td colspan=2><input type="text" #pincode="ngModel" name="pincode" class="form-control" placeholder="Pincode"
+            <td colspan=2>
+              <select name="state" class="form-control">
+                <option value="" selected disabled hidden>Select state</option>
+                <option *ngFor="let val of state">
+                  {{val}}
+                </option>
+              </select>
+
+            </td>
+            <td colspan=1><input type="text" #pincode="ngModel" name="pincode" class="form-control" placeholder="Pincode"
                 pattern="[0-9]+" maxlength="6" required [class.is-invalid]="pincode.invalid && pincode.touched" ngModel />
               <small class="text-danger" [class.d-none]="pincode.valid || pincode.untouched"><b>Pincode must contain
                   digits only.</b></small>
             </td>
-            <td colspan=1><input type="text" #state="ngModel" name="state" class="form-control" placeholder="State"
-                required [class.is-invalid]="state.invalid && state.touched" ngModel />
-              <small class="text-danger" [class.d-none]="state.valid || state.untouched"><b>State is
-                  required.</b></small>
-            </td>
+
           </tr>
           <tr>
             <td colspan="2"><input type="text" #phone="ngModel" name="phone" placeholder="Phone" class="form-control"
@@ -104,16 +112,24 @@
                 placeholder="Physical disablity" ngModel />
 
             </td>
-            <td><input type="text" #maritalstatus="ngModel" name="maritalstatus" placeholder="Marital Status" class="form-control"
-                ngModel />
+            <td><select name="maritalstatus" class="form-control">
+                <option value="" selected disabled hidden>Marital Status</option>
+                <option *ngFor="let val of maritalstatus">
+                  {{val}}
+                </option>
+              </select>
 
             </td>
           </tr>
           <tr>
-            <td colspan="2"><input type=text name="edustatus" #edustatus="ngModel" placeholder="Educational Status"
-                class="form-control" required [class.is-invalid]="edustatus.invalid && edustatus.touched" ngModel />
-              <small class="text-danger" [class.d-none]="edustatus.valid || edustatus.untouched"><b>Middle name is
-                  required.</b></small>
+            <td colspan="2">
+              <select name="edustatus" class="form-control">
+                <option value="" selected disabled hidden>Educational Status</option>
+                <option *ngFor="let val of edustatus">
+                  {{val}}
+                </option>
+              </select>
+
             </td>
             <td colspan="1"><input type="text" name="birthsign" #birthsign="ngModel" placeholder="Birth Sign" class="form-control"
                 required [class.is-invalid]="birthsign.invalid && birthsign.touched" ngModel />
