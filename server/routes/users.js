@@ -180,6 +180,8 @@ router.get('/getTemporaryUsers', function (req, response) {
     }
   });
 })
+
+// To get All registered users along with their profile info for admin purpose.
 router.get('/getAllUsers', function (req, response) {
   checkToken.checkToken({ UserId: req.headers.userid, token: req.headers.authorization }, (err, res1) => {
     if (err) {

@@ -1,6 +1,6 @@
 var mongo = require('../mongoConnect');
 personModel = mongo.mongoose.model("personalSchema", mongo.personalSchema, "PersonalInfo");
-personModelTemp = mongo.mongoose.model("personalSchemaTemp", mongo.personalSchemaTemp, "PersonalInfoPortalTemp");
+personModelTemp = mongo.mongoose.model("personalSchemaTemp", mongo.personalSchemaTemp, "PersonalInfoTemp");
 
 
 /*

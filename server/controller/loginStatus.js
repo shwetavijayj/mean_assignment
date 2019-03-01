@@ -20,6 +20,7 @@ function enterLoginDetails(userData, callback) {
             callback(err);
         }
         else {
+            console.log(res);
             tokenmodel.create(tokenDetails, (err1, res1) => {
                 if (err1) {
                     callback(err1)

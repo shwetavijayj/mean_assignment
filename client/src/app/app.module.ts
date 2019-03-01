@@ -12,6 +12,10 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { CreateRoleComponent } from './create-role/create-role.component';
 import { HeaderUserComponent } from './header-user/header-user.component';
 import { LoginService } from './services/login.service';
+import { AdminHomepageComponent } from './admin-homepage/admin-homepage.component';
+import { ErrorComponent } from './error/error.component';
+import { AdminService } from './services/admin.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,9 @@ import { LoginService } from './services/login.service';
     PersonalInfoDisplayComponent,
     CreateUserComponent,
     CreateRoleComponent,
-    HeaderUserComponent
+    HeaderUserComponent,
+    AdminHomepageComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,7 @@ import { LoginService } from './services/login.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [LoginService],
+  providers: [LoginService, UserService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

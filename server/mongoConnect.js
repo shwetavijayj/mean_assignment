@@ -7,7 +7,7 @@ mongoose.Promise = global.Promise;
 // 5. Model-Schema-Mapping with collection on Mongo DB and
 // establishing collection with it.'
 mongoose.connect(
-    "mongodb://localhost/PersonalInfoPortal",
+    "mongodb://localhost/PersonalInfo",
     { useNewUrlParser: true }
 );
 
