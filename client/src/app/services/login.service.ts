@@ -3,14 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Response } from '@angular/http';
 import { Observable } from "rxjs";
 import { Injectable } from '@angular/core';
-
+import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
   url: String;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.url = "http://localhost:8080";
   }
   authenticateUser(userDetails): Observable<Response> {
@@ -26,12 +27,7 @@ export class LoginService {
         'Content-Type': 'application/json'
       })
     };
-
-    this.http.post(`${this.url}/`, userDetails, httpOptions).subscribe(data => {
-      alert('ok');
-    }, error => {
-      console.log(error);
-    });
+    resp = this.http.post(`${this.url}/`, userDetails, httpOptions);
     return resp;
   }
 }

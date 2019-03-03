@@ -1,24 +1,27 @@
-<div class="container col-sm-4">
-  <form name="createUserform" className="createUserform">
-    <div class="form-group">
-      <table class="table table-bordered">
-        <tbody>
-          <tr></tr>
-          <tr>
-            <td colspan="2"><small>Enter Role</small>
-              <input type="text" #rolename="ngModel" name="rolename" class="form-control" required [class.is-invalid]="rolename.invalid && rolename.touched"
-                ngModel />
-              <small class="text-danger" [class.d-none]="rolename.valid || rolename.untouched"><b>role name is
-                  required.</b></small>
-              <!-- <small class="text-danger" [class.d-none]=""><b>Role name is already exist.</b></small> -->
-            </td>
-          </tr>
-          <tr>
-            <td><button type="submit" class="btn btn-warning">Clear</button></td>
-            <td><button type="submit" class="btn btn-success" [disabled]="!userForm.valid">Create Role</button></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </form>
+<div class="container">
+  <app-headers></app-headers>
+  <div class="col-sm-4">
+    <form name="createUserform" className="createUserform">
+      <div class="form-group">
+        <table class="table table-bordered">
+          <tbody>
+            <tr></tr>
+            <tr>
+              <td colspan="2"><small>Enter Role</small>
+                <input type="text" #rolename="ngModel" name="rolename" class="form-control" required [class.is-invalid]="rolename.invalid && rolename.touched"
+                  ngModel />
+                <small class="text-danger" [class.d-none]="rolename.valid || rolename.untouched"><b>role name is
+                    required.</b></small>
+                <!-- <small class="text-danger" [class.d-none]=""><b>Role name is already exist.</b></small> -->
+              </td>
+            </tr>
+            <tr>
+              <td><button type="submit" class="btn btn-warning">Clear</button></td>
+              <td><button type="submit" class="btn btn-success" [disabled]="!userForm.valid">Create Role</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
+  </div>
 </div>

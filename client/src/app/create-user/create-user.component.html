@@ -1,44 +1,48 @@
-<div class="container col-sm-4">
-  <form name="createUserform" className="createUserform">
-    <div class="form-group">
-      <table class="table table-bordered">
-        <tbody>
-          <tr></tr>
-          <tr>
-            <td colspan="2"><small>Username</small>
-              <input type="text" #username="ngModel" name="username" class="form-control" required [class.is-invalid]="username.invalid && username.touched"
-                ngModel />
-              <small class="text-danger" [class.d-none]="username.valid || username.untouched"><b>user name is
-                  required.</b></small>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <small>Email</small>
-              <input type="email" #email="ngModel" name="email" class="form-control" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
-                required [class.is-invalid]="email.invalid && email.touched" ngModel />
-              <small class="text-danger" [class.d-none]="email.valid || email.untouched"><b>email is
-                  required.</b></small>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <!-- implementation -->
-              <small>Role</small>
-              <select>
-                <option>Select Role</option>
-                <div *ngFor="let i of userRole">
-                  <option>{{i}}</option>
-                </div>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td><button type="submit" class="btn btn-warning">Clear</button></td>
-            <td><button type="submit" class="btn btn-success" [disabled]="!userForm.valid">Create User</button></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </form>
+<div class="container">
+  <app-headers></app-headers>
+
+  <div class="col-sm-4">
+    <form name="createUserform" className="createUserform">
+      <div class="form-group">
+        <table class="table table-bordered">
+          <tbody>
+            <tr></tr>
+            <tr>
+              <td colspan="2"><small>Username</small>
+                <input type="text" #username="ngModel" name="username" class="form-control" required [class.is-invalid]="username.invalid && username.touched"
+                  ngModel />
+                <small class="text-danger" [class.d-none]="username.valid || username.untouched"><b>user name is
+                    required.</b></small>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <small>Email</small>
+                <input type="email" #email="ngModel" name="email" class="form-control" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                  required [class.is-invalid]="email.invalid && email.touched" ngModel />
+                <small class="text-danger" [class.d-none]="email.valid || email.untouched"><b>email is
+                    required.</b></small>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <!-- implementation -->
+                <small>Role</small>
+                <select>
+                  <option>Select Role</option>
+                  <div *ngFor="let i of userRole">
+                    <option>{{i}}</option>
+                  </div>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td><button type="submit" class="btn btn-warning">Clear</button></td>
+              <td><button type="submit" class="btn btn-success" [disabled]="!userForm.valid">Create User</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
+  </div>
 </div>
