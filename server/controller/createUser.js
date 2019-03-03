@@ -4,7 +4,7 @@ var uniqid = require('uniqid');
 const async = require('async');
 //creating user model
 var userModel = mongo.mongoose.model('User', mongo.userSchema, "users");
-personModelTemp = mongo.mongoose.model("personalSchemaTemp", mongo.personalSchemaTemp, "PersonalInfoPortalTemp");
+personModelTemp = mongo.mongoose.model("personalSchemaTemp", mongo.personalSchemaTemp, "PersonalInfoTemp");
 personModel = mongo.mongoose.model("personalSchema", mongo.personalSchema, "PersonalInfo");
 // api to create user
 function createUser(data, callback) {

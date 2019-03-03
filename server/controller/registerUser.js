@@ -1,7 +1,7 @@
 var mongo = require('../mongoConnect');
 var createuser = require('../controller/createUser');
 var uniqid = require('uniqid');
-personModelTemp = mongo.mongoose.model("personalSchemaTemp", mongo.personalSchemaTemp, "PersonalInfoPortalTemp");
+personModelTemp = mongo.mongoose.model("personalSchemaTemp", mongo.personalSchemaTemp, "PersonalInfoTemp");
 personModel = mongo.mongoose.model("personalSchema", mongo.personalSchema, "PersonalInfo");
 // api to store user at temporary location 
 function registerUserTemporary(data, callback) {
