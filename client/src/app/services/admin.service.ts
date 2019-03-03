@@ -13,8 +13,43 @@ export class AdminService {
     this.url = "http://localhost:8080";
   }
 
-  getAllUsers(): Observable<Response> {
-    console.log("in admin service");
+
+  //1
+  getAllUsers(callback) {
+    
+    let resp: Object;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        "authorization": sessionStorage.getItem("authorization"),
+        "UserId": sessionStorage.getItem("UserId")
+      })
+    };
+    this.http.get(`${this.url}/users/getAllUsers`, httpOptions).subscribe(data => {
+      console.log("Data is", data);
+      resp = data;
+    });
+   callback(resp);
+  }
+  
+  //2
+  getAllUserRole():Observable<Object>{
+    let resp: Observable<Object>;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        "authorization": sessionStorage.getItem("authorization"),
+        "UserId": sessionStorage.getItem("UserId")
+      })
+    };
+    this.http.get(`${this.url}/users/getUserRole`, httpOptions).subscribe(data => {
+      console.log("Data is", data);
+    });
+    return resp;
+  }
+
+  //3
+  getPendingRequestData(){
     let resp: Observable<Response>;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -23,12 +58,95 @@ export class AdminService {
         "UserId": sessionStorage.getItem("UserId")
       })
     };
-    this.http.get(`${this.url}/getAllUsers`, httpOptions).subscribe(data => {
+    this.http.get(`${this.url}/users/getincompleteUsers`, httpOptions).subscribe(data => {
       console.log("Data is", data);
     });
-
-
     return resp;
   }
+
+  //4
+  getIncompleteUserData(){
+    let resp: Observable<Response>;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        "authorization": sessionStorage.getItem("authorization"),
+        "UserId": sessionStorage.getItem("UserId")
+      })
+    };
+    this.http.get(`${this.url}/users/registerUser`, httpOptions).subscribe(data => {
+      console.log("Data is", data);
+    });
+    return resp;
+  }
+
+  //5
+  saveData(userData){
+    let resp: Observable<Response>;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        "authorization": sessionStorage.getItem("authorization"),
+        "UserId": sessionStorage.getItem("UserId")
+      })
+    };
+    this.http.post(`${this.url}/users/registerUser`,userData, httpOptions).subscribe(data => {
+      console.log("Data is", data);
+    });
+    return resp;
+  }
+
+  //6
+  updateUser(userData){
+    let resp: Observable<Response>;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        "authorization": sessionStorage.getItem("authorization"),
+        "UserId": sessionStorage.getItem("UserId")
+      })
+    };
+    this.http.post(`${this.url}/users/updateUser`,userData, httpOptions).subscribe(data => {
+      console.log("Data is", data);
+    });
+    return resp;
+  }
+
+
+  //7
+  saveData1(userData){
+    let resp: Observable<Response>;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        "authorization": sessionStorage.getItem("authorization"),
+        "UserId": sessionStorage.getItem("UserId")
+      })
+    };
+    this.http.post(`${this.url}/users/registerUser1`,userData, httpOptions).subscribe(data => {
+      console.log("Data is", data);
+    });
+    return resp;
+  }
+
+  
+
+
+//8
+rejectData(userData){
+  let resp: Observable<Response>;
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      "authorization": sessionStorage.getItem("authorization"),
+      "UserId": sessionStorage.getItem("UserId")
+    })
+  };
+  this.http.post(`${this.url}/users/rejectUserRequest`,userData, httpOptions).subscribe(data => {
+    console.log("Data is", data);
+  });
+  return resp;
+}
+
 
 }

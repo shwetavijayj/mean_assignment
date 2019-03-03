@@ -11,8 +11,17 @@ export class AdminHomepageComponent implements OnInit {
 
   ngOnInit() {
     //call api for get permanent users to show on homepage
+    //correct this api
     console.log("Hello admin");
-    this.serv.getAllUsers();
+    this.serv.getAllUsers((err,result)=>{
+      if(err){
+        console.log(err);
+      }
+      else{
+        console.log(result);
+      }
+    });
+    
   }
 
 }

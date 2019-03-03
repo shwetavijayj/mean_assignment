@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   }
   login() {
     this.serv.authenticateUser(this.loginform.value).pipe(map(data => {
-      let result = Object.assign({}, data);
+      let result:any = Object.assign({}, data);
       sessionStorage.setItem("authorization", result.responseToken);
       sessionStorage.setItem("roleId", result.roleId);
       sessionStorage.setItem("UserName", result.UserName);

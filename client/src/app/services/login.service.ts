@@ -14,8 +14,8 @@ export class LoginService {
   constructor(private http: HttpClient, private router: Router) {
     this.url = "http://localhost:8080";
   }
-  authenticateUser(userDetails): Observable<Response> {
-    let resp: Observable<Response>;
+  authenticateUser(userDetails): Observable<Object> {
+    let resp: Observable<Object>;
 
     //1. define reuest header
     console.log("In service", JSON.stringify(userDetails));

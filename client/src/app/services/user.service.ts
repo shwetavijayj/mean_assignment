@@ -13,7 +13,8 @@ export class UserService {
     this.url = "http://localhost:8080";
   }
 
-  addUserDetails(userDetails) {
+  addUserDetails(userDetails):Observable<Object> {
+    let result: Observable<Object>;
     console.log("user data", userDetails);
     let userData = {
       FullName: {
@@ -47,8 +48,41 @@ export class UserService {
       })
     };
     console.log(userData);
-    this.http.post(`${this.url}/users/registerUserTemp`, userData, httpOptions).subscribe(data => {
+    result=this.http.post(`${this.url}/users/registerUserTemp`, userData, httpOptions);
+      return result;
+    
+  }
+
+
+  getUserData(id){
+    let resp: Observable<Response>;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        "authorization": sessionStorage.getItem("authorization"),
+        "UserId": sessionStorage.getItem("UserId")
+      })
+    };
+    this.http.get(`${this.url}/${id}`, httpOptions).subscribe(data => {
       console.log("Data is", data);
     });
+    return resp;
   }
+
+  updateUserData(userData){
+    userData.UserName = sessionStorage.getItem("UserName");
+    let resp: Observable<Response>;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        "authorization": sessionStorage.getItem("authorization"),
+        "UserId": sessionStorage.getItem("UserId")
+      })
+    };
+    this.http.post(`${this.url}/users/updateUserTemp`,userData, httpOptions).subscribe(data => {
+      console.log("Data is", data);
+    });
+    return resp;
+  }
+
 }
