@@ -10,19 +10,19 @@
             </td>
           </tr>
           <td>
-            <input type="text" #firstname="ngModel" class="form-control" name="firstname" placeholder="First Name"
-              pattern="[A-Za-z]+" required [class.is-invalid]="firstname.invalid && firstname.touched" ngModel />
+            <input type="text" #firstname="ngModel" class="form-control" name="fname" placeholder="First Name" pattern="[A-Za-z]+"
+              required [class.is-invalid]="firstname.invalid && firstname.touched" ngModel />
             <small class="text-danger" [class.d-none]="firstname.valid || firstname.untouched"><b>First name is
                 required.</b></small>
           </td>
           <td>
-            <input type="text" #middlename="ngModel" class="form-control" name="middlename" placeholder="Middle Name"
+            <input type="text" #middlename="ngModel" class="form-control" name="mname" placeholder="Middle Name"
               pattern="[A-Za-z]+" required [class.is-invalid]="middlename.invalid && middlename.touched" ngModel />
             <small class="text-danger" [class.d-none]="middlename.valid || middlename.untouched"><b>Middle name is
                 required.</b></small>
           </td>
           <td>
-            <input type="text" #lastname="ngModel" name="lastname" class="form-control" placeholder="Last Name" pattern="[A-Za-z]+"
+            <input type="text" #lastname="ngModel" name="lname" class="form-control" placeholder="Last Name" pattern="[A-Za-z]+"
               required [class.is-invalid]="lastname.invalid && lastname.touched" ngModel />
             <small class="text-danger" [class.d-none]="lastname.valid || lastname.untouched"><b>Last name is
                 required.</b></small>

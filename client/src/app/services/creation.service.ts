@@ -15,8 +15,8 @@ export class CreationService {
   }
 
   //2
-  createUser(userData){
-    let resp: Observable<Response>;
+  createUser(userData) {
+    let resp: Observable<Object>;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -24,15 +24,13 @@ export class CreationService {
         "UserId": sessionStorage.getItem("UserId")
       })
     };
-    this.http.post(`${this.url}/users/createUser`,userData, httpOptions).subscribe(data => {
-      console.log("Data is", data);
-    });
+    resp = this.http.post(`${this.url}/users/createUser`, userData, httpOptions);
     return resp;
   }
 
   //3
-  createRole(roleDetails){
-    let resp: Observable<Response>;
+  createRole(roleDetails) {
+    let resp: Observable<Object>;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -40,14 +38,12 @@ export class CreationService {
         "UserId": sessionStorage.getItem("UserId")
       })
     };
-    this.http.post(`${this.url}/users/createUser`,roleDetails, httpOptions).subscribe(data => {
-      console.log("Data is", data);
-    });
+    resp = this.http.post(`${this.url}/users/userRole`, roleDetails, httpOptions);
     return resp;
   }
 
   //logout service 
-  logout(){
+  logout() {
     let resp: Observable<Response>;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -56,9 +52,7 @@ export class CreationService {
         "UserId": sessionStorage.getItem("UserId")
       })
     };
-    this.http.post(`${this.url}/logout`, httpOptions).subscribe(data => {
-      console.log("Data is", data);
-    });
+    resp = this.http.post(`${this.url}/logout`, httpOptions)
     return resp;
   }
 

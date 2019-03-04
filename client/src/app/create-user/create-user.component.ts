@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../services/admin.service';
-
+import { FormGroup, FormControl } from '@angular/forms';
+import { CreationService } from '../services/creation.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,11 +12,38 @@ import { AdminService } from '../services/admin.service';
 })
 export class CreateUserComponent implements OnInit {
 
-  constructor(private serv: AdminService) { }
-  public userRole = ['Admin', 'Operator', 'Access_user']
+  createUserform: FormGroup;
+  constructor(private serv: AdminService, private createServ: CreationService, private router: Router) {
+    this.createUserform = new FormGroup({
+      UserName: new FormControl(),
+      EmailAddress: new FormControl(),
+      roleName: new FormControl()
+    })
+  }
+  public userRole = []
   ngOnInit() {
-    let result = this.serv.getAllUserRole();
-    console.log(result);
+    this.serv.getAllUserRole().subscribe(
+      (resp: Response) => {
+        console.log(resp.data.data);
+        (resp.data.data).forEach(element => {
+          this.userRole.push(element.roleName);
+        });
+      },
+      error => {
+        this.router.navigateByUrl('error');
+      }
+    );
+  }
+  createUser() {
+    this.createServ.createUser(this.createUserform.value).subscribe(
+      (resp: Response) => {
+        this.router.navigateByUrl('adminHomepage');
+      },
+      error => {
+        this.router.navigateByUrl('error');
+      }
+
+    )
   }
 
 }

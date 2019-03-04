@@ -16,6 +16,7 @@ import { AdminHomepageComponent } from './admin-homepage/admin-homepage.componen
 import { ErrorComponent } from './error/error.component';
 import { AdminService } from './services/admin.service';
 import { UserService } from './services/user.service';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { UserService } from './services/user.service';
     CreateRoleComponent,
     HeaderUserComponent,
     AdminHomepageComponent,
-    ErrorComponent
+    ErrorComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

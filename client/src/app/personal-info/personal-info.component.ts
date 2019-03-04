@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from '../services/user.service';
+import { map } from 'rxjs';
 declare var require: any;
 var states = require('../../assets/states.json');
 @Component({
@@ -18,9 +19,9 @@ export class PersonalInfoComponent implements OnInit {
   public age;
   constructor(private serv: UserService) {
     this.addinfo = new FormGroup({
-      firstname: new FormControl(),
-      middlename: new FormControl(),
-      lastname: new FormControl(),
+      fname: new FormControl(),
+      mname: new FormControl(),
+      lname: new FormControl(),
       gender: new FormControl(),
       dateofbirth: new FormControl(),
       age: new FormControl(),
@@ -43,7 +44,9 @@ export class PersonalInfoComponent implements OnInit {
   }
 
   save() {
-    this.serv.addUserDetails(this.addinfo.value);
+    this.serv.addUserDetails(this.addinfo.value).pipe(map(data => {
+      console.log(data);
+    }));
   }
   calculateAge() {
     console.log("Dob", this.addinfo.value.dateofbirth);

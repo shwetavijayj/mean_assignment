@@ -4,6 +4,7 @@ import { Response } from '@angular/http';
 import { Observable } from "rxjs";
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +14,7 @@ export class UserService {
     this.url = "http://localhost:8080";
   }
 
-  addUserDetails(userDetails):Observable<Object> {
+  addUserDetails(userDetails): Observable<Object> {
     let result: Observable<Object>;
     console.log("user data", userDetails);
     let userData = {
@@ -48,13 +49,14 @@ export class UserService {
       })
     };
     console.log(userData);
-    result=this.http.post(`${this.url}/users/registerUserTemp`, userData, httpOptions);
-      return result;
-    
+    result = this.http.post(`${this.url}/users/registerUserTemp`, JSON.stringify(userData), httpOptions);
+    return result;
+
+
   }
 
 
-  getUserData(id){
+  getUserData(id) {
     let resp: Observable<Response>;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -69,7 +71,7 @@ export class UserService {
     return resp;
   }
 
-  updateUserData(userData){
+  updateUserData(userData) {
     userData.UserName = sessionStorage.getItem("UserName");
     let resp: Observable<Response>;
     const httpOptions = {
@@ -79,7 +81,7 @@ export class UserService {
         "UserId": sessionStorage.getItem("UserId")
       })
     };
-    this.http.post(`${this.url}/users/updateUserTemp`,userData, httpOptions).subscribe(data => {
+    this.http.post(`${this.url}/users/updateUserTemp`, userData, httpOptions).subscribe(data => {
       console.log("Data is", data);
     });
     return resp;

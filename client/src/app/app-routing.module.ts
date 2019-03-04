@@ -7,11 +7,13 @@ import { CreateRoleComponent } from './create-role/create-role.component';
 import { ErrorComponent } from './error/error.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { LoginComponent } from './login/login.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "adminHomepage", component: AdminHomepageComponent },
   { path: "addinfo", component: PersonalInfoComponent },
+  { path: "userlist", component: UserListComponent },
   { path: "editinfo", component: PersonalInfoDisplayComponent },
   { path: "createrole", component: CreateRoleComponent },
   { path: "createuser", component: CreateUserComponent },
