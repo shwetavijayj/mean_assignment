@@ -82,19 +82,19 @@ router.post('/updateUser', function (req, response) {
           'DateOfBirth': req.body.DateOfBirth,
           'Age': req.body.Age,
           'Address': {
-            'Addr1': req.body.Address.Addr1,
-            'Addr2': req.body.Address.Addr2,
-            'Addr3': req.body.Address.Addr3
+            'addr1': req.body.Address.addr1,
+            'addr2': req.body.Address.addr2,
+            'addr3': req.body.Address.addr3
           },
           'City': req.body.City,
           'State': req.body.State,
           'Pincode': req.body.Pincode,
           'Phone': req.body.Phone,
           'Mobile': req.body.Mobile,
-          'PhysicalDisability': req.body.PhysicalDisability,
-          'MaritalStatus': req.body.MaritalStatus,
-          'EduStatus': req.body.EduStatus,
-          'BirthSign': req.body.Birthsign
+          'physicaldisability': req.body.physicaldisability,
+          'maritalstatus': req.body.maritalstatus,
+          'edustatus': req.body.edustatus,
+          'birthsign': req.body.birthsign
         }
         updateUser.updateUserDetails(data, (err, res) => {
           if (err) {
@@ -130,19 +130,19 @@ router.post('/updateUserTemp', function (req, response) {
           'DateOfBirth': req.body.DateOfBirth,
           'Age': req.body.Age,
           'Address': {
-            'Addr1': req.body.Address.addr1,
-            'Addr2': req.body.Address.addr2,
-            'Addr3': req.body.Address.addr3
+            'addr1': req.body.Address.addr1,
+            'addr2': req.body.Address.addr2,
+            'addr3': req.body.Address.addr3
           },
           'City': req.body.City,
           'State': req.body.State,
           'Pincode': req.body.Pincode,
           'Phone': req.body.Phone,
           'Mobile': req.body.Mobile,
-          'PhysicalDisability': req.body.PhysicalDisability,
-          'MaritalStatus': req.body.MaritalStatus,
-          'EduStatus': req.body.EduStatus,
-          'BirthSign': req.body.Birthsign,
+          'physicaldisability': req.body.physicaldisability,
+          'maritalstatus': req.body.maritalstatus,
+          'edustatus': req.body.edustatus,
+          'birthsign': req.body.birthsign,
           'isApproved': 0
         }
         updateUser.updateTempUserDetails(data, (err, res) => {

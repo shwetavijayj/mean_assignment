@@ -18,10 +18,11 @@ export class UserService {
     let result: Observable<Object>;
     console.log("user data", userDetails);
     let userData = {
+      UserId: sessionStorage.getItem("UserId"),
       FullName: {
-        firstname: userDetails.firstname,
-        middlename: userDetails.middlename,
-        lastname: userDetails.lastname
+        fname: userDetails.fname,
+        mname: userDetails.mname,
+        lname: userDetails.lname
       },
       Gender: userDetails.gender,
       DateOfBirth: userDetails.dateofbirth,
@@ -36,10 +37,10 @@ export class UserService {
       Pincode: userDetails.pincode,
       Phone: userDetails.phone,
       Mobile: userDetails.mobile,
-      PhysicalDisability: userDetails.PhysicalDisability,
-      MaritalStatus: userDetails.maritalstatus,
-      Edustatus: userDetails.edustatus,
-      Birthsign: userDetails.birthsign
+      physicaldisability: userDetails.physicaldisability,
+      maritalstatus: userDetails.maritalstatus,
+      edustatus: userDetails.edustatus,
+      birthsign: userDetails.birthsign
     }
     const httpOptions = {
       headers: new HttpHeaders({
@@ -57,7 +58,7 @@ export class UserService {
 
 
   getUserData(id) {
-    let resp: Observable<Response>;
+    let resp: Observable<Object>;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -65,9 +66,7 @@ export class UserService {
         "UserId": sessionStorage.getItem("UserId")
       })
     };
-    this.http.get(`${this.url}/${id}`, httpOptions).subscribe(data => {
-      console.log("Data is", data);
-    });
+    resp = this.http.get(`${this.url}/${id}`, httpOptions);
     return resp;
   }
 

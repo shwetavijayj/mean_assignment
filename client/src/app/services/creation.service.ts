@@ -44,7 +44,7 @@ export class CreationService {
 
   //logout service 
   logout() {
-    let resp: Observable<Response>;
+    let resp: Observable<Object>;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

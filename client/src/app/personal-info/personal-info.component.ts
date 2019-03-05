@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { map } from 'rxjs';
+import { Router } from '@angular/router';
 declare var require: any;
 var states = require('../../assets/states.json');
 @Component({
@@ -17,7 +18,7 @@ export class PersonalInfoComponent implements OnInit {
   public edustatus = ['Masters', 'Phd', 'Graduate', 'Under-Graduate', 'HSC', 'SSC', 'Illiterate'];
   public state = Object.values(states);
   public age;
-  constructor(private serv: UserService) {
+  constructor(private serv: UserService, private router: Router) {
     this.addinfo = new FormGroup({
       fname: new FormControl(),
       mname: new FormControl(),
@@ -44,9 +45,14 @@ export class PersonalInfoComponent implements OnInit {
   }
 
   save() {
-    this.serv.addUserDetails(this.addinfo.value).pipe(map(data => {
-      console.log(data);
-    }));
+    this.serv.addUserDetails(this.addinfo.value).subscribe(
+      (resp: Response) => {
+        this.router.navigateByUrl('editinfo');
+      },
+      error => {
+        this.router.navigateByUrl('error');
+      }
+    )
   }
   calculateAge() {
     console.log("Dob", this.addinfo.value.dateofbirth);

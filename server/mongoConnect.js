@@ -47,10 +47,10 @@ var personalSchema = mongoose.Schema({
     Pincode: Number,
     Phone: Number,
     Mobile: Number,
-    PhysicalDisability: String,
-    MaritalStatus: String,
-    EduStatus: String,
-    Birthsign: String
+    physicaldisability: String,
+    maritalstatus: String,
+    edustatus: String,
+    birthsign: String
 
 });
 
@@ -67,10 +67,10 @@ var personalSchemaTemp = mongoose.Schema({
     Pincode: Number,
     Phone: Number,
     Mobile: Number,
-    PhysicalDisability: String,
-    MaritalStatus: String,
-    EduStatus: String,
-    Birthsign: String,
+    physicaldisability: String,
+    maritalstatus: String,
+    edustatus: String,
+    birthsign: String,
     isApproved: Number
 
 })

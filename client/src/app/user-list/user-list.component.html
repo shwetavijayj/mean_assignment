@@ -1,33 +1,35 @@
 <div class="container">
   <app-headers></app-headers>
   <div *ngFor="let ele of persons">
-    <div class="card">
+    <div class="card form-style-5">
       <div class="card-body">
-        <h5 class="card-title">{{ele.FullName.fname}}&nbsp;{{ele.FullName.lname}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">card-subtitle</h6>
-        <div *ngIf="collapse">
+        <h5 class="card-title"><b>{{ele.FullName.fname}}&nbsp;{{ele.FullName.lname}}</b></h5>
+        <h6 class="card-subtitle mb-2 text-muted">User Id : <b>{{ele.UserId}}</b></h6>
+        <div *ngIf="ele.collapse">
           <div>
-            Date of Birth:&nbsp;{{ele.DateOfBirth}}<br>
-            Age:&nbsp;{{ele.Age}}<br>
-            Gender:&nbsp;{{ele.Gender}}
+            Date of Birth:&nbsp;<b>{{ele.DateOfBirth}}</b><br>
+            Age:&nbsp;<b>{{ele.Age}}</b><br>
+            Gender:&nbsp;<b>{{ele.Gender}}</b>
             <hr>
             Address:<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;Address Line1:&nbsp;{{ele.Address.addr1}}<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;Address Line2:&nbsp;{{ele.Address.addr1}}<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;Address Line3:&nbsp;{{ele.Address.addr1}}<br>
-            City:&nbsp;{{ele.City}}<br>
-            State:&nbsp;{{ele.State}}<br>
-            Pincode:&nbsp;{{ele.Pincode}}
+            &nbsp;&nbsp;&nbsp;&nbsp;Address Line1:&nbsp;<b>{{ele.Address.addr1}}</b><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Address Line2:&nbsp;<b>{{ele.Address.addr1}}</b><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;Address Line3:&nbsp;<b>{{ele.Address.addr1}}</b><br>
+            City:&nbsp;<b>{{ele.City}}</b><br>
+            State:&nbsp;<b>{{ele.State}}</b><br>
+            Pincode:&nbsp;<b>{{ele.Pincode}}</b>
             <hr>
-            Phone:&nbsp;{{ele.Phone}} &nbsp;&nbsp; Mobile:&nbsp;{{ele.Mobile}}
+            Phone:&nbsp;<b>{{ele.Phone}}</b> &nbsp;&nbsp;&nbsp;&nbsp; Mobile:&nbsp;<b>{{ele.Mobile}}</b>
             <hr>
-            Educational Status: &nbsp;{{ele.EduStatus}}&nbsp;&nbsp; Marital Status:&nbsp;{{ele.MaritalStatus}}
+            Educational Status: &nbsp;<b>{{ele.edustatus}}</b>&nbsp;&nbsp;&nbsp;&nbsp; Marital Status:&nbsp;<b>{{ele.maritalstatus}}</b>
             <hr>
-            Physical Disability:&nbsp;{{ele.PhysicalDisability}}&nbsp;&nbsp; Birth Sign:&nbsp;{{ele.Birthsign}}
+            Physical Disability:&nbsp;<b>{{ele.physicaldisability}}</b>&nbsp;&nbsp; Birth Sign:&nbsp;<b>{{ele.birthsign}}</b>
             <hr>
+            <Button type="submit" (click)=approve(ele)>Approve</Button> &nbsp;&nbsp;
+            <Button type="submit" (click)="reject(ele)">Reject</Button>
           </div>
         </div>
-        <button (click)="toggle()">{{btnMsg}}</button>
+        <button type="submit" (click)="toggle(ele)">{{ele.btnMsg}}</button>
       </div>
     </div>
   </div>

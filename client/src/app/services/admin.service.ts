@@ -80,7 +80,7 @@ export class AdminService {
 
   //5
   saveData(userData) {
-    let resp: Observable<Response>;
+    let resp: Observable<Object>;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

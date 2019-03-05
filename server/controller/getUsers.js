@@ -81,19 +81,19 @@ function getFormattedData(data, callback) {
             DateOfBirth: element.DateOfBirth,
             Age: element.Age,
             Address: {
-                Addr1: element.Address.Addr1,
-                Addr2: element.Address.Addr2,
-                Addr3: element.Address.Addr3
+                addr1: element.Address.addr1,
+                addr2: element.Address.addr2,
+                addr3: element.Address.addr3
             },
             City: element.City,
             State: element.State,
             Pincode: element.Pincode,
             Phone: element.Phone,
             Mobile: element.Mobile,
-            PhysicalDisability: element.PhysicalDisability,
-            MaritalStatus: element.MaritalStatus,
-            EduStatus: element.EduStatus,
-            Birthsign: element.Birthsign,
+            physicaldisability: element.physicaldisability,
+            maritalstatus: element.maritalstatus,
+            edustatus: element.edustatus,
+            birthsign: element.birthsign,
             isApproved: element.isApproved
         })
 
