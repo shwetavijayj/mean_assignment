@@ -4,7 +4,7 @@ personModelTemp = mongo.mongoose.model("personalSchemaTemp", mongo.personalSchem
 
 
 /*
-    this api will return information of user to display it on home-page
+    this api will return information of user to display it on home-page from permanent or temporary location.
 */
 function getUserInfo(data, callback) {
     condition = {
@@ -15,7 +15,27 @@ function getUserInfo(data, callback) {
             callback(err);
         }
         else {
-            callback(null, res);
+            personModelTemp.find(condition, function (error, res1) {
+                if (error) {
+                    callback(error)
+                } else {
+                    // callback(null, res1);
+                    if (res != null && res1 != null) {
+                        res.updateFlag = 1;
+                        callback(null, res);
+                    }
+                    else if (res == null && res1 != null) {
+                        res1.updateFlag = 0;
+                        callback(null, res1);
+                    } else if (res != null && res1 == null) {
+                        res.updateFlag = 0;
+                        callback(null, res);
+                    }
+                }
+            })
+
+            // callback(null, res);
+
         }
     });
 }

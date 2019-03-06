@@ -72,9 +72,8 @@ export class AdminService {
         "UserId": sessionStorage.getItem("UserId")
       })
     };
-    this.http.get(`${this.url}/users/registerUser`, httpOptions).subscribe(data => {
-      console.log("Data is", data);
-    });
+
+    resp = this.http.get(`${this.url}/users/getincompleteUsers`, httpOptions)
     return resp;
   }
 
@@ -88,9 +87,7 @@ export class AdminService {
         "UserId": sessionStorage.getItem("UserId")
       })
     };
-    this.http.post(`${this.url}/users/registerUser`, userData, httpOptions).subscribe(data => {
-      console.log("Data is", data);
-    });
+    resp = this.http.post(`${this.url}/users/registerUser1`, JSON.stringify(userData), httpOptions);
     return resp;
   }
 

@@ -70,9 +70,37 @@ export class UserService {
     return resp;
   }
 
-  updateUserData(userData) {
-    userData.UserName = sessionStorage.getItem("UserName");
-    let resp: Observable<Response>;
+  updateUserData(userData, PersonalUniqueId) {
+
+    let userDetails = {
+      'UserName': sessionStorage.getItem("UserName"),
+      'PersonalUniqueId': PersonalUniqueId,
+      'FullName': {
+        'fname': userData.fname,
+        'mname': userData.mname,
+        'lname': userData.lname
+      },
+      'Gender': userData.Gender,
+      'DateOfBirth': userData.DateOfBirth,
+      'Age': userData.Age,
+      'Address': {
+        'addr1': userData.addr1,
+        'addr2': userData.addr2,
+        'addr3': userData.addr3
+      },
+      'City': userData.City,
+      'State': userData.State,
+      'Pincode': userData.Pincode,
+      'Phone': userData.Phone,
+      'Mobile': userData.Mobile,
+      'physicaldisability': userData.physicaldisability,
+      'maritalstatus': userData.maritalstatus,
+      'edustatus': userData.edustatus,
+      'birthsign': userData.birthsign
+    }
+
+
+    let resp: Observable<Object>;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -80,9 +108,7 @@ export class UserService {
         "UserId": sessionStorage.getItem("UserId")
       })
     };
-    this.http.post(`${this.url}/users/updateUserTemp`, userData, httpOptions).subscribe(data => {
-      console.log("Data is", data);
-    });
+    resp = this.http.post(`${this.url}/users/updateUserTemp`, JSON.stringify(userDetails), httpOptions);
     return resp;
   }
 

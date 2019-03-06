@@ -50,8 +50,8 @@ var personalSchema = mongoose.Schema({
     physicaldisability: String,
     maritalstatus: String,
     edustatus: String,
-    birthsign: String
-
+    birthsign: String,
+    isApproved: Number
 });
 
 var personalSchemaTemp = mongoose.Schema({

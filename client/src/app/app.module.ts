@@ -17,6 +17,7 @@ import { ErrorComponent } from './error/error.component';
 import { AdminService } from './services/admin.service';
 import { UserService } from './services/user.service';
 import { UserListComponent } from './user-list/user-list.component';
+import { IncompleteuserComponent } from './incompleteuser/incompleteuser.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { UserListComponent } from './user-list/user-list.component';
     HeaderUserComponent,
     AdminHomepageComponent,
     ErrorComponent,
-    UserListComponent
+    UserListComponent,
+    IncompleteuserComponent
   ],
   imports: [
     BrowserModule,

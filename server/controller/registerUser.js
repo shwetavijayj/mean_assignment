@@ -59,9 +59,9 @@ function registerUser(data, callback) {
                 DateOfBirth: res.DateOfBirth,
                 Age: res.Age,
                 Address: {
-                    Addr1: res.Address.addr1,
-                    Addr2: res.Address.addr2,
-                    Addr3: res.Address.addr3
+                    addr1: res.Address.addr1,
+                    addr2: res.Address.addr2,
+                    addr3: res.Address.addr3
                 },
                 City: res.City,
                 State: res.State,
@@ -71,7 +71,8 @@ function registerUser(data, callback) {
                 physicaldisability: res.physicaldisability,
                 maritalstatus: res.maritalstatus,
                 edustatus: res.edustatus,
-                birthsign: res.birthsign
+                birthsign: res.birthsign,
+                isApproved: 1
             }
             console.log(userData);
             personModel.create(userData, function (err1, resp) {

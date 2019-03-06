@@ -1,5 +1,12 @@
 <div class="container">
-  <app-header-user></app-header-user>
+  <div *ngIf="incomplete">
+    <div *ngIf="adminFlag">
+      <app-headers></app-headers>
+    </div>
+    <div *ngIf="!adminFlag">
+      <app-header-user></app-header-user>
+    </div>
+  </div>
   <form name="addinfo" className="createUserform" [formGroup]="addinfo">
     <div class="form-group form-style-5">
       <table>
@@ -25,7 +32,7 @@
             <td>
               <select name="gender" formControlName="gender" class="form-control">
                 <option value="" selected disabled>Select Gender</option>
-                <option *ngFor="let val of Gender" value={{val}}>
+                <option *ngFor="let val of Gender1" value={{val}}>
                   {{val}}
                 </option>
               </select>
@@ -96,7 +103,7 @@
             </td>
             <td><select name="maritalstatus" class="form-control" formControlName="maritalstatus">
                 <option value="" selected disabled hidden>Marital Status</option>
-                <option *ngFor="let val of maritalstatus" value="{{val}}">
+                <option *ngFor="let val of maritalstatus1" value="{{val}}">
                   {{val}}
                 </option>
               </select>
@@ -107,7 +114,7 @@
             <td colspan="2">
               <select name="edustatus" class="form-control" formControlName="edustatus">
                 <option value="" selected disabled hidden>Educational Status</option>
-                <option *ngFor="let val of edustatus" value="{{val}}">
+                <option *ngFor="let val of edustatus1" value="{{val}}">
                   {{val}}
                 </option>
               </select>

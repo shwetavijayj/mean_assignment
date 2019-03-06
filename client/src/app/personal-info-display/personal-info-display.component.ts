@@ -11,8 +11,28 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class PersonalInfoDisplayComponent implements OnInit {
 
   public personDetails: any;
+  public showMsg: String;
+  public editBtn: Boolean;
   userInfoDisplayform: FormGroup;
   public fname: String;
+  public mname: String;
+  public lname: String;
+  public Gender: String;
+  public DateOfBirth: Date;
+  public Age: Number;
+  public addr1: String;
+  public addr2: String;
+  public addr3: String;
+  public City: String;
+  public State: String;
+  public Pincode: Number;
+  public Phone: Number;
+  public Mobile: Number;
+  public physicaldisability: String;
+  public maritalstatus: String;
+  public edustatus: String;
+  public birthsign: String;
+  public isreadOnly: Boolean;
   constructor(private serv: UserService, private router: Router) {
     this.userInfoDisplayform = new FormGroup({
       fname: new FormControl(),
@@ -40,8 +60,20 @@ export class PersonalInfoDisplayComponent implements OnInit {
   ngOnInit() {
     let id = sessionStorage.getItem("UserId");
     this.serv.getUserData(id).subscribe(
-      (resp: Response) => {
+      (resp: Any) => {
         this.personDetails = resp.data[0];
+        console.log("Personal details", this.personDetails);
+        if ((sessionStorage.getItem("PersonalUniqueId") === "null") && (sessionStorage.getItem("TempUser") === "1")) {
+          this.showMsg = "Your data is not yet approved by admin, you can edit your profile only after approval of current request."
+          this.editBtn = false;
+        }
+        else if ((sessionStorage.getItem("TempUser") === "0")) {
+          this.showMsg = "Your change request is not yet approved by admin, you can edit your profile only after approval of current request.and your changed profile will be reflected soon.."
+          this.editBtn = false;
+        }
+        else {
+          this.editBtn = true;
+        }
         this.fname = this.personDetails.FullName.fname;
         this.mname = this.personDetails.FullName.lname;
         this.lname = this.personDetails.FullName.mname;
@@ -60,6 +92,7 @@ export class PersonalInfoDisplayComponent implements OnInit {
         this.maritalstatus = this.personDetails.maritalstatus;
         this.edustatus = this.personDetails.edustatus;
         this.birthsign = this.personDetails.birthsign;
+        this.isreadOnly = true;
       },
       error => {
         this.router.navigateByUrl('error');
@@ -67,4 +100,19 @@ export class PersonalInfoDisplayComponent implements OnInit {
     );
   }
 
+  toggleReadonly() {
+    this.isreadOnly = false;
+  }
+
+  updateData() {
+    console.log("update", this.userInfoDisplayform.value);
+    this.serv.updateUserData(this.userInfoDisplayform.value, this.personDetails.PersonalUniqueId).subscribe(
+      (resp: any) => {
+        this.router.navigateByUrl('editinfo');
+      },
+      error => {
+        this.router.navigateByUrl('error');
+      }
+    );
+  }
 }

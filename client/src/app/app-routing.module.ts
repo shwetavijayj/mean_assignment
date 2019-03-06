@@ -8,6 +8,7 @@ import { ErrorComponent } from './error/error.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { LoginComponent } from './login/login.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { IncompleteuserComponent } from './incompleteuser/incompleteuser.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: "editinfo", component: PersonalInfoDisplayComponent },
   { path: "createrole", component: CreateRoleComponent },
   { path: "createuser", component: CreateUserComponent },
-  { path: "error", component: ErrorComponent }
+  { path: "error", component: ErrorComponent },
+  { path: 'getUser', component: IncompleteuserComponent }
 ];
 
 @NgModule({

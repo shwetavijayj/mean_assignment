@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   }
   login() {
     this.serv.authenticateUser(this.loginform.value).pipe(map(data => {
-      let result:any = Object.assign({}, data);
+      let result: any = Object.assign({}, data);
       sessionStorage.setItem("authorization", result.responseToken);
       sessionStorage.setItem("roleId", result.roleId);
       sessionStorage.setItem("UserName", result.UserName);
@@ -35,9 +35,21 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('error');
       }
       else if (result.roleId === 3) {
-        if (result.PersonalUniqueId == null) {
+        sessionStorage.setItem("isApproved", result.isApproved);
+        if (result.PersonalUniqueId == null && result.isApproved == 0) {
           this.router.navigateByUrl('addinfo');
-        } else {
+        } else if (result.PersonalUniqueId == null && result.isApproved == null) {
+          sessionStorage.setItem("PersonalUniqueId", result.PersonalUniqueId);
+          sessionStorage.setItem("TempUser", "1");
+          this.router.navigateByUrl('editinfo');
+        } else if (result.PersonalUniqueId != null && result.isApproved == 0) {
+          sessionStorage.setItem("PersonalUniqueId", result.PersonalUniqueId);
+          sessionStorage.setItem("TempUser", "0");
+          this.router.navigateByUrl('editinfo');
+        }
+        else if (result.PersonalUniqueId != null && result.isApproved == 1) {
+          sessionStorage.setItem("PersonalUniqueId", result.PersonalUniqueId);
+          sessionStorage.setItem("TempUser", "1");
           this.router.navigateByUrl('editinfo');
         }
       }

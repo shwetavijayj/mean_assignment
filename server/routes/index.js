@@ -65,7 +65,7 @@ router.post('/', function (req, res1, next) {
             if (err) {
               res1.send({ 'User not exist': err });
             } else {
-              res1.send({ responseToken: token, msg: 'User logged in successfully.', roleId: res.roleId, UserName: res.UserName, UserId: res.UserId, PersonalUniqueId: res.PersonalUniqueId });
+              res1.send({ responseToken: token, msg: 'User logged in successfully.', roleId: res.roleId, UserName: res.UserName, UserId: res.UserId, PersonalUniqueId: res.PersonalUniqueId, isApproved: res.isApproved });
             }
           })
 
