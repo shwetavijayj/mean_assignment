@@ -1,16 +1,18 @@
 <div class="Container">
   <app-headers></app-headers>
-  <div *ngFor="let ele of incompleteusers">
-    <div class="card form-style-5">
-      <div class="card-body">
-        <h5 class="card-title"><b>{{ele.UserName}}</b></h5>
-        <h6 class="card-subtitle mb-2 text-muted">User Id : <b>{{ele.UserId}}</b></h6>
-        <div *ngIf="ele.collapse">
-          <div>
-            <app-personal-info></app-personal-info>
+  <div class="form-style-5">
+    <div *ngFor="let ele of incompleteusers">
+      <div class="card form-style-5">
+        <div class="card-body">
+          <h5 class="card-title"><b>{{ele.UserName}}</b></h5>
+          <h6 class="card-subtitle mb-2 text-muted">User Id : <b>{{ele.UserId}}</b></h6>
+          <div *ngIf="ele.collapse">
+            <div>
+              <app-personal-info></app-personal-info>
+            </div>
           </div>
+          <button type="submit" (click)="toggle(ele)">{{ele.btnMsg}}</button>
         </div>
-        <button type="submit" (click)="toggle(ele)">{{ele.btnMsg}}</button>
       </div>
     </div>
   </div>

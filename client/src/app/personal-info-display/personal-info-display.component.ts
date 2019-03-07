@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
+
 import { FormGroup, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-personal-info-display',
@@ -60,7 +60,7 @@ export class PersonalInfoDisplayComponent implements OnInit {
   ngOnInit() {
     let id = sessionStorage.getItem("UserId");
     this.serv.getUserData(id).subscribe(
-      (resp: Any) => {
+      (resp: any) => {
         this.personDetails = resp.data[0];
         console.log("Personal details", this.personDetails);
         if ((sessionStorage.getItem("PersonalUniqueId") === "null") && (sessionStorage.getItem("TempUser") === "1")) {
@@ -104,10 +104,13 @@ export class PersonalInfoDisplayComponent implements OnInit {
     this.isreadOnly = false;
   }
 
+
+
   updateData() {
     console.log("update", this.userInfoDisplayform.value);
     this.serv.updateUserData(this.userInfoDisplayform.value, this.personDetails.PersonalUniqueId).subscribe(
       (resp: any) => {
+        sessionStorage.setItem("TempUser", "0");
         this.router.navigateByUrl('editinfo');
       },
       error => {

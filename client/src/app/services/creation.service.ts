@@ -52,6 +52,7 @@ export class CreationService {
         "UserId": sessionStorage.getItem("UserId")
       })
     };
+    sessionStorage.setItem("TempUser", "0");
     resp = this.http.post(`${this.url}/logout`, httpOptions)
     return resp;
   }

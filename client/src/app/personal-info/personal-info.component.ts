@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from '../services/user.service';
-import { map } from 'rxjs';
+
 import { Router } from '@angular/router';
 import { AdminService } from '../services/admin.service';
 declare var require: any;

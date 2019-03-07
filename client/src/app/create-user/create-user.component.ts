@@ -23,7 +23,7 @@ export class CreateUserComponent implements OnInit {
   public userRole = []
   ngOnInit() {
     this.serv.getAllUserRole().subscribe(
-      (resp: Response) => {
+      (resp: any) => {
         console.log(resp.data.data);
         (resp.data.data).forEach(element => {
           this.userRole.push(element.roleName);
@@ -36,7 +36,7 @@ export class CreateUserComponent implements OnInit {
   }
   createUser() {
     this.createServ.createUser(this.createUserform.value).subscribe(
-      (resp: Response) => {
+      (resp: any) => {
         this.router.navigateByUrl('adminHomepage');
       },
       error => {

@@ -71,7 +71,7 @@ router.post('/updateUser', function (req, response) {
     else {
       if (mongoose) {
         data = {
-          'UserId': req.headers.userid,
+          'UserId': req.body.UserId,
           'PersonalUniqueId': req.body.PersonalUniqueId,
           'FullName': {
             'fname': req.body.FullName.fname,

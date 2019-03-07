@@ -64,7 +64,7 @@ export class AdminService {
 
   //4
   getIncompleteUserData() {
-    let resp: Observable<Response>;
+    let resp: Observable<Object>;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ export class AdminService {
         "UserId": sessionStorage.getItem("UserId")
       })
     };
-    resp = this.http.post(`${this.url}/users/registerUser1`, JSON.stringify(userData), httpOptions);
+    resp = this.http.post(`${this.url}/users/registerUser`, JSON.stringify(userData), httpOptions);
     return resp;
   }
 

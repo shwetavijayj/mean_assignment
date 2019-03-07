@@ -1,5 +1,8 @@
 <div class="container">
   <app-headers></app-headers>
+  <div *ngIf="emptyFlag">
+    <h2>No Requests Pending!!</h2>
+  </div>
   <div *ngFor="let ele of persons">
     <div class="card form-style-5">
       <div class="card-body">

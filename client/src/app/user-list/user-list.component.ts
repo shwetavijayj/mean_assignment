@@ -12,7 +12,7 @@ export class UserListComponent implements OnInit {
 
 
   public persons: Array<any> = [];
-
+  public emptyFlag: Boolean;
   public btnMsg: String;
   public id: String;
   constructor(private serv: AdminService, private router: Router) {
@@ -23,13 +23,18 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
 
     this.serv.getPendingRequestData().subscribe(
-      (resp: Response) => {
+      (resp: any) => {
         (resp.data).forEach(element => {
           element.collapse = false;
           element.btnMsg = "More Details";
           this.persons.push(element);
         });
-
+        if (this.persons.length === 0) {
+          this.emptyFlag = true;
+        }
+        else {
+          this.emptyFlag = false;
+        }
       },
       error => {
         this.router.navigateByUrl('error');
@@ -52,10 +57,18 @@ export class UserListComponent implements OnInit {
   approve(element) {
     console.log("user data is", element);
     if (element.PersonalUniqueId) {
+      this.serv.updateUser(element).subscribe(
+        (resp: any) => {
+          this.router.navigateByUrl('userlist');
+        },
+        error => {
+          this.router.navigateByUrl('error');
+        }
 
+      )
     } else {
       this.serv.saveData(element).subscribe(
-        (resp: Response) => {
+        (resp: any) => {
           this.router.navigateByUrl('userlist');
         },
         error => {
@@ -66,4 +79,17 @@ export class UserListComponent implements OnInit {
     }
   }
 
+  reject(element) {
+    this.serv.rejectData(element).subscribe(
+      (resp: any) => {
+        this.router.navigateByUrl('userlist');
+      },
+      error => {
+        this.router.navigateByUrl('error');
+      }
+
+    )
+  }
 }
+
+

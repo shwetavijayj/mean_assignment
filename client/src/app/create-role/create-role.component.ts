@@ -22,7 +22,7 @@ export class CreateRoleComponent implements OnInit {
   ngOnInit() {
 
     this.getServ.getAllUserRole().subscribe(
-      (resp: Response) => {
+      (resp: any) => {
         console.log(resp.data.data);
         this.roleCount = resp.data.data.length;
         console.log(this.roleCount);

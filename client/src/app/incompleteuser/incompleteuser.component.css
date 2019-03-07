@@ -1,0 +1,27 @@
+.form-style-5 Button[type="submit"]
+{
+	position: relative;
+	display: block;
+	
+	color: #FFF;
+	margin: 0 auto;
+	background: #1abc9c;
+	font-size: 18px;
+	text-align: center;
+	font-style: normal;
+	
+	border: 1px solid #16a085;
+	
+	margin-bottom: 10px;
+}
+
+.form-style-5{
+	max-width: 750px;
+	padding: 10px 20px;
+	background: #f4f7f8;
+	margin: 10px auto;
+	padding: 20px;
+	background: #f4f7f8;
+	border-radius: 8px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}

@@ -26,18 +26,23 @@ function authenticateUser(data, callback) {
                                     callback(error1);
                                 }
                                 else {
-                                    if (result1 == null && result2 != null) {
+                                    if (result1 == null && result2.length != 0) {
                                         res.isApproved = null;
                                         res.PersonalUniqueId = null;
                                         callback(null, res);
                                     }
-                                    else if (result1 != null && result2 == null) {
+                                    else if (result1 != null && result2.length == 0) {
                                         res.isApproved = 1;
                                         res.PersonalUniqueId = result1.PersonalUniqueId;
                                         callback(null, res);
-                                    } else if (result1 != null && result2 != null) {
+                                    } else if (result1 != null && result2.length != 0) {
                                         res.PersonalUniqueId = result1.PersonalUniqueId;
                                         res.isApproved = 1;
+                                        callback(null, res);
+                                    }
+                                    else if (result1 == null && result2.length == 0) {
+                                        res.PersonalUniqueId = null;
+                                        res.isApproved = 0;
                                         callback(null, res);
                                     }
                                 }
