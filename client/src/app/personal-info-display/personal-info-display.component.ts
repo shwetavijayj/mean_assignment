@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
-
+declare var require: any;
+var states = require('../../assets/states.json');
 import { FormGroup, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-personal-info-display',
@@ -10,6 +11,10 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class PersonalInfoDisplayComponent implements OnInit {
 
+  public Gender1 = ['Male', 'Female', 'Other'];
+  public maritalstatus1 = ['Married', 'Unmarried', 'Divorced', 'Widow', 'Widower'];
+  public edustatus1 = ['Masters', 'Phd', 'Graduate', 'Under-Graduate', 'HSC', 'SSC', 'Illiterate'];
+  public state = Object.values(states);
   public personDetails: any;
   public showMsg: String;
   public editBtn: Boolean;

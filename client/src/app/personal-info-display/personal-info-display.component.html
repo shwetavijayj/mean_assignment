@@ -28,14 +28,18 @@
           </td>
           <tr>
             <td>
-              <input type="text" name="Gender" formControlName="Gender" class="form-control" [readonly]="isreadOnly"
-                [(ngModel)]="Gender">
-              <!-- <select name="Gender" class="form-control" formControlName="Gender">
-                <option value="" selected disabled hidden>Select Gender</option>
-                <option *ngFor="let val of Gender">
-                  {{val}}
-                </option>
-              </select> -->
+              <div *ngIf="isreadOnly">
+                <input type="text" name="Gender" formControlName="Gender" class="form-control" [readonly]="isreadOnly"
+                  [(ngModel)]="Gender"></div>
+              <div *ngIf="!isreadOnly">
+                <select name="Gender" class="form-control" formControlName="Gender">
+                  <option value="" selected disabled hidden>{{Gender}}</option>
+                  <option *ngFor="let val of Gender1">
+                    {{val}}
+                  </option>
+                </select>
+              </div>
+
             </td>
             <td><input type="date" formControlName="DateOfBirth" name="dateOfBirth" class="form-control" [readonly]="isreadOnly"
                 placeholder="Date of Birth" [(ngModel)]="DateOfBirth">
@@ -75,15 +79,17 @@
           </tr>
           <tr>
             <td colspan=2>
-              <input type="text" name="State" formControlName="State" class="form-control" [readonly]="isreadOnly"
-                [(ngModel)]="State">
-              <!-- <select name="State" class="form-control">
-                <option value="" selected disabled hidden>Select state</option>
-                <option *ngFor="let val of state">
-                  {{val}}
-                </option>
-              </select> -->
-
+              <div *ngIf="isreadOnly">
+                <input type="text" name="State" formControlName="State" class="form-control" [readonly]="isreadOnly"
+                  [(ngModel)]="State"></div>
+              <div *ngIf="!isreadOnly">
+                <select name="State" class="form-control" formControlName="State">
+                  <option value="" selected disabled hidden>{{State}}</option>
+                  <option *ngFor="let val of state">
+                    {{val}}
+                  </option>
+                </select>
+              </div>
             </td>
             <td colspan=1><input type="text" formControlName="Pincode" name="Pincode" class="form-control" placeholder="Pincode"
                 [readonly]="isreadOnly" [(ngModel)]="Pincode" />
@@ -112,27 +118,36 @@
 
             </td>
             <td>
-              <input type="text" name="maritalstatus" formControlName="maritalstatus" class="form-control" [readonly]="isreadOnly"
-                [(ngModel)]="maritalstatus">
-              <!-- <select name="maritalstatus" class="form-control">
-                <option value="" selected disabled hidden>Marital Status</option>
-                <option *ngFor="let val of maritalstatus">
-                  {{val}}
-                </option>
-              </select> -->
+              <div *ngIf="isreadOnly">
+                <input type="text" name="maritalstatus" formControlName="maritalstatus" class="form-control" [readonly]="isreadOnly"
+                  [(ngModel)]="maritalstatus">
+              </div>
+              <div *ngIf="!isreadOnly">
+                <select name="maritalstatus" class="form-control" formControlName="maritalstatus">
+                  <option value="" selected disabled hidden>{{maritalstatus}}</option>
+                  <option *ngFor="let val of maritalstatus1">
+                    {{val}}
+                  </option>
+                </select>
+              </div>
+
 
             </td>
           </tr>
           <tr>
             <td colspan="2">
-              <input type="text" name="edustatus" formControlName="edustatus" class="form-control" [readonly]="isreadOnly"
-                [(ngModel)]="edustatus">
-              <!-- <select name="edustatus" class="form-control">
-                <option value="" selected disabled hidden>Educational Status</option>
-                <option *ngFor="let val of edustatus">
-                  {{val}}
-                </option>
-              </select> -->
+              <div *ngIf="isreadOnly">
+                <input type="text" name="edustatus" formControlName="edustatus" class="form-control" [readonly]="isreadOnly"
+                  [(ngModel)]="edustatus"></div>
+              <div *ngIf="!isreadOnly">
+                <select name="edustatus" class="form-control" formControlName="edustatus">
+                  <option value="" selected disabled hidden>Educational Status</option>
+                  <option *ngFor="let val of edustatus1">
+                    {{val}}
+                  </option>
+                </select>
+              </div>
+
 
             </td>
             <td colspan="1"><input type="text" name="birthsign" formControlName="birthsign" placeholder="Birth Sign"
