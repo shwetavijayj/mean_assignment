@@ -3,7 +3,8 @@
   <div *ngIf="emptyFlag">
     <h2>No Requests Pending!!</h2>
   </div>
-  <div *ngFor="let ele of persons">
+  <input type="text" placeholder="Search.." name="searchContent" [(ngModel)]="searchContent">
+  <div *ngFor="let ele of persons | searchuser : searchContent">
     <div class="card form-style-5">
       <div class="card-body">
         <h5 class="card-title"><b>{{ele.FullName.fname}}&nbsp;{{ele.FullName.lname}}</b></h5>

@@ -18,6 +18,7 @@ import { AdminService } from './services/admin.service';
 import { UserService } from './services/user.service';
 import { UserListComponent } from './user-list/user-list.component';
 import { IncompleteuserComponent } from './incompleteuser/incompleteuser.component';
+import { SearchuserPipe } from './searchuser.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { IncompleteuserComponent } from './incompleteuser/incompleteuser.compone
     AdminHomepageComponent,
     ErrorComponent,
     UserListComponent,
-    IncompleteuserComponent
+    IncompleteuserComponent,
+    SearchuserPipe
   ],
   imports: [
     BrowserModule,

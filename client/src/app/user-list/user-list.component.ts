@@ -15,6 +15,7 @@ export class UserListComponent implements OnInit {
   public emptyFlag: Boolean;
   public btnMsg: String;
   public id: String;
+  public searchContent: String;
   constructor(private serv: AdminService, private router: Router) {
 
 
