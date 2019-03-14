@@ -7,9 +7,9 @@ function checkToken(userData, callback) {
         UserId: userData.UserId,
         token: userData.token
     }
-    tokenmodel.find(condition, (err, res) => {
-        if (err) {
-            callback(err)
+    tokenmodel.find(condition, (checkTokenError, res) => {
+        if (checkTokenError) {
+            callback(checkTokenError)
         }
         else {
             callback(null, { statusCode: 200 });
@@ -17,9 +17,9 @@ function checkToken(userData, callback) {
     })
 };
 function deleteToken(userData, callback) {
-    tokenmodel.deleteOne(userData, (err, res) => {
-        if (err) {
-            callback(err);
+    tokenmodel.deleteOne(userData, (deleteTokenErr, res) => {
+        if (deleteTokenErr) {
+            callback(deleteTokenErr);
         }
         else {
             callback(null, res);

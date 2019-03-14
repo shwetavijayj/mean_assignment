@@ -5,45 +5,45 @@ personModelTemp = mongo.mongoose.model("personalSchemaTemp", mongo.personalSchem
 //authenticate user while sign-in and generate token
 function authenticateUser(data, callback) {
     console.log(data);
-    userModel.findOne({ UserName: data.UserName, Password: data.Password }, function (err, res) {
-        if (err) {
-            callback(err);
+    userModel.findOne({ UserName: data.UserName, Password: data.Password }, function (findUserErr, findUserResult) {
+        if (findUserErr) {
+            callback(findUserErr);
         }
         else {
-            if (res != null) {
+            if (findUserResult != null) {
 
                 let id = {
-                    UserId: res.UserId
+                    UserId: findUserResult.UserId
                 }
-                if (res.roleId == 3) {
-                    personModel.findOne(id, function (error, result1) {
-                        if (error) {
-                            callback(error);
+                if (findUserResult.roleId == 3) {
+                    personModel.findOne(id, function (findInfoErr, findInfoResult) {
+                        if (findInfoErr) {
+                            callback(findInfoErr);
                         }
                         else {
-                            personModelTemp.find(id, function (error1, result2) {
-                                if (error1) {
-                                    callback(error1);
+                            personModelTemp.find(id, function (findInfoTempErr, findInfoTempResult) {
+                                if (findInfoTempErr) {
+                                    callback(findInfoTempErr);
                                 }
                                 else {
-                                    if (result1 == null && result2.length != 0) {
-                                        res.isApproved = null;
-                                        res.PersonalUniqueId = null;
-                                        callback(null, res);
+                                    if (findInfoResult == null && findInfoTempResult.length != 0) {
+                                        findUserResult.isApproved = null;
+                                        findUserResult.PersonalUniqueId = null;
+                                        callback(null, findUserResult);
                                     }
-                                    else if (result1 != null && result2.length == 0) {
-                                        res.isApproved = 1;
-                                        res.PersonalUniqueId = result1.PersonalUniqueId;
-                                        callback(null, res);
-                                    } else if (result1 != null && result2.length != 0) {
-                                        res.PersonalUniqueId = result1.PersonalUniqueId;
-                                        res.isApproved = 1;
-                                        callback(null, res);
+                                    else if (findInfoResult != null && findInfoTempResult.length == 0) {
+                                        findUserResult.isApproved = 1;
+                                        findUserResult.PersonalUniqueId = findInfoResult.PersonalUniqueId;
+                                        callback(null, findUserResult);
+                                    } else if (findInfoResult != null && findInfoTempResult.length != 0) {
+                                        findUserResult.PersonalUniqueId = findInfoResult.PersonalUniqueId;
+                                        findUserResult.isApproved = 1;
+                                        callback(null, findUserResult);
                                     }
-                                    else if (result1 == null && result2.length == 0) {
-                                        res.PersonalUniqueId = null;
-                                        res.isApproved = 0;
-                                        callback(null, res);
+                                    else if (findInfoResult == null && findInfoTempResult.length == 0) {
+                                        findUserResult.PersonalUniqueId = null;
+                                        findUserResult.isApproved = 0;
+                                        callback(null, findUserResult);
                                     }
                                 }
                             });
@@ -51,8 +51,8 @@ function authenticateUser(data, callback) {
                     })
                 }
                 else {
-                    res.PersonalUniqueId = null;
-                    callback(null, res);
+                    findUserResult.PersonalUniqueId = null;
+                    callback(null, findUserResult);
                 }
             }
             else {

@@ -15,17 +15,17 @@ function enterLoginDetails(userData, callback) {
         UserId: userData.UserId,
         token: userData.token
     }
-    loginModel.create(userDetails, (err, res) => {
-        if (err) {
-            callback(err);
+    loginModel.create(userDetails, (loginInfoErr, loginInfoResult) => {
+        if (loginInfoErr) {
+            callback(loginInfoErr);
         }
         else {
-            console.log(res);
-            tokenmodel.create(tokenDetails, (err1, res1) => {
-                if (err1) {
-                    callback(err1)
+            console.log(loginInfoResult);
+            tokenmodel.create(tokenDetails, (createTokenErr, createTokenResult) => {
+                if (createTokenErr) {
+                    callback(createTokenErr)
                 } else {
-                    callback(null, { msg: 'Data store successfully.', result: res1 });
+                    callback(null, { msg: 'Data store successfully.', result: createTokenResult });
                 }
             })
 

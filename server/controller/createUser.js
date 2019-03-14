@@ -8,18 +8,18 @@ personModelTemp = mongo.mongoose.model("personalSchemaTemp", mongo.personalSchem
 personModel = mongo.mongoose.model("personalSchema", mongo.personalSchema, "PersonalInfo");
 // api to create user
 function createUser(data, callback) {
-    userRole.getRole(data.roleName, function (error, res1) {
-        if (error) {
-            callback(error)
+    userRole.getRole(data.roleName, function (getRoleErr, getRoleResult) {
+        if (getRoleErr) {
+            callback(getRoleErr)
         }
         else {
-            let role = JSON.parse(res1.data);
+            let role = JSON.parse(getRoleResult.data);
             data.roleId = role.roleId;
             console.log("Userid", uniqid.process());
             data.UserId = uniqid.process();
-            userModel.create(data, function (err, res) {
-                if (err) {
-                    callback({ status: 404, error: err });
+            userModel.create(data, function (createUserErr, createUserResult) {
+                if (createUserErr) {
+                    callback({ status: 404, error: createUserErr });
                 }
                 else {
                     callback(null, 'User created successfully.')
@@ -32,12 +32,12 @@ function createUser(data, callback) {
 
 // api to get user id by username
 function getUser(data, callback) {
-    userModel.findOne({ UserName: data }, function (err, res) {
-        if (err) {
-            callback({ status: 404, data: err })
+    userModel.findOne({ UserName: data }, function (getUserErr, getUserResult) {
+        if (getUserErr) {
+            callback({ status: 404, data: getUserErr })
         }
         else {
-            let ans = JSON.stringify(res);
+            let ans = JSON.stringify(getUserResult);
             console.log(ans);
             callback(null, ans)
         }
@@ -46,27 +46,27 @@ function getUser(data, callback) {
 //Get All access_users for admin purpose
 function getAllUsers(callback) {
     let finalResult = [];
-    userModel.find({ roleId: 3 }, function (err, res) {
-        if (err) {
-            callback({ status: 404, error: err });
+    userModel.find({ roleId: 3 }, function (getAllUserErr, getAllUserResult) {
+        if (getAllUserErr) {
+            callback({ status: 404, error: getAllUserErr });
         }
         else {
-            getFormattedData(res, (error, result) => {
-                if (error) {
-                    callback(error);
+            getFormattedData(getAllUserResult, (getFormattedDataErr, getFormattedDataResult) => {
+                if (getFormattedDataErr) {
+                    callback(getFormattedDataErr);
                 }
                 else {
-                    async.eachSeries(result, function (element, cb) {
-                        personModel.find({ UserId: element.UserId }, function (error1, result1) {
-                            if (error1) {
-                                callback(error1);
+                    async.eachSeries(getFormattedDataResult, function (element, cb) {
+                        personModel.find({ UserId: element.UserId }, function (findPersonalInfoErr, findPersonalInfoResult) {
+                            if (findPersonalInfoErr) {
+                                callback(findPersonalInfoErr);
                             } else {
-                                personModelTemp.find({ UserId: element.UserId }, function (error2, result2) {
-                                    if (error2) {
-                                        callback(error2);
+                                personModelTemp.find({ UserId: element.UserId }, function (findPersonalInfoTempErr, findPersonalInfoTempResult) {
+                                    if (findPersonalInfoTempErr) {
+                                        callback(findPersonalInfoTempErr);
                                     }
                                     else {
-                                        if ((result1.length == 0) && (result2.length == 0)) {
+                                        if ((findPersonalInfoResult.length == 0) && (findPersonalInfoTempResult.length == 0)) {
                                             finalResult.push(element);
                                             cb(null, finalResult);
                                         }

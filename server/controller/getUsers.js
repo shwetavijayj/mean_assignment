@@ -10,31 +10,31 @@ function getUserInfo(data, callback) {
     condition = {
         UserId: data.UserId
     }
-    personModel.find(condition, function (err, res) {
-        if (err) {
-            callback(err);
+    personModel.find(condition, function (userInfoErr, userInfoResult) {
+        if (userInfoErr) {
+            callback(userInfoErr);
         }
         else {
-            personModelTemp.find(condition, function (error, res1) {
-                if (error) {
-                    callback(error)
+            personModelTemp.find(condition, function (userInfoTempErr, userInfoTempResult) {
+                if (userInfoTempErr) {
+                    callback(userInfoTempErr)
                 } else {
-                    // callback(null, res1);
-                    if (res != null && res1 != null) {
-                        res.updateFlag = 1;
-                        callback(null, res);
+                    // callback(null, userInfoTempResult);
+                    if (userInfoResult != null && userInfoTempResult != null) {
+                        userInfoResult.updateFlag = 1;
+                        callback(null, userInfoResult);
                     }
-                    else if (res == null && res1 != null) {
-                        res1.updateFlag = 0;
-                        callback(null, res1);
-                    } else if (res != null && res1 == null) {
-                        res.updateFlag = 0;
-                        callback(null, res);
+                    else if (userInfoResult == null && userInfoTempResult != null) {
+                        userInfoTempResult.updateFlag = 0;
+                        callback(null, userInfoTempResult);
+                    } else if (userInfoResult != null && userInfoTempResult == null) {
+                        userInfoResult.updateFlag = 0;
+                        callback(null, userInfoResult);
                     }
                 }
             })
 
-            // callback(null, res);
+            // callback(null, userInfoResult);
 
         }
     });
@@ -46,16 +46,16 @@ Admin purpose
 this api will return information of all users
 */
 function getAllUserInformation(callback) {
-    personModel.find(function (err, res) {
-        if (err) {
-            callback(err);
+    personModel.find(function (getAllUserInfoErr, getAllUserInfoRes) {
+        if (getAllUserInfoErr) {
+            callback(getAllUserInfoErr);
         } else {
-            getFormattedData(res, (err, result) => {
-                if (err) {
-                    callback(err);
+            getFormattedData(getAllUserInfoRes, (formattedDataErr, formattedDataResult) => {
+                if (formattedDataErr) {
+                    callback(formattedDataErr);
                 }
                 else {
-                    callback(null, result);
+                    callback(null, formattedDataResult);
                 }
             })
 
@@ -68,16 +68,16 @@ Admin purpose
 this api will return information of all users from temporary user
 */
 function getAllTempUsersInformation(callback) {
-    personModelTemp.find(function (err, res) {
-        if (err) {
-            callback(err);
+    personModelTemp.find(function (getAllTempUserErr, getAllTempUserResult) {
+        if (getAllTempUserErr) {
+            callback(getAllTempUserErr);
         } else {
-            getFormattedData(res, (err, result) => {
-                if (err) {
-                    callback(err);
+            getFormattedData(getAllTempUserResult, (formattedDataErr, formattedDataResult) => {
+                if (formattedDataErr) {
+                    callback(formattedDataErr);
                 }
                 else {
-                    callback(null, result);
+                    callback(null, formattedDataResult);
                 }
             })
 
