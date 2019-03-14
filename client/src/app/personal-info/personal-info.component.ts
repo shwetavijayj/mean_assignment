@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 
 import { Router } from '@angular/router';
@@ -23,25 +23,52 @@ export class PersonalInfoComponent implements OnInit {
   public incomplete: Boolean;
   constructor(private serv: UserService, private router: Router, private adminserv: AdminService) {
     this.addinfo = new FormGroup({
-      fname: new FormControl(),
-      mname: new FormControl(),
-      lname: new FormControl(),
+      fname: new FormControl(['', Validators.required]),
+      mname: new FormControl(['', Validators.required]),
+      lname: new FormControl(['', Validators.required]),
       gender: new FormControl(),
       dateofbirth: new FormControl(),
       age: new FormControl(),
-      addr1: new FormControl(),
-      addr2: new FormControl(),
-      addr3: new FormControl(),
-      city: new FormControl(),
+      addr1: new FormControl(['', Validators.required]),
+      addr2: new FormControl(['', Validators.required]),
+      addr3: new FormControl(['', Validators.required]),
+      city: new FormControl(['', Validators.required]),
       state1: new FormControl(),
-      pincode: new FormControl(),
+      pincode: new FormControl(['', Validators.required]),
       phone: new FormControl(),
-      mobile: new FormControl(),
+      mobile: new FormControl(['', Validators.required]),
       physicaldisability: new FormControl(),
       maritalstatus: new FormControl(),
       edustatus: new FormControl(),
       birthsign: new FormControl()
     })
+  }
+  get fname() {
+    return this.addinfo.get('fname');
+  }
+  get mname() {
+    return this.addinfo.get('mname');
+  }
+  get lname() {
+    return this.addinfo.get('lname');
+  }
+  get addr1() {
+    return this.addinfo.get('addr1');
+  }
+  get addr2() {
+    return this.addinfo.get('addr2');
+  }
+  get addr3() {
+    return this.addinfo.get('addr3');
+  }
+  get city() {
+    return this.addinfo.get('city');
+  }
+  get pincode() {
+    return this.addinfo.get('pincode');
+  }
+  get mobile() {
+    return this.addinfo.get('mobile');
   }
 
   ngOnInit() {

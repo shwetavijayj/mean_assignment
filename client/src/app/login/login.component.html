@@ -1,12 +1,19 @@
 <div class="container col-sm-4">
+  <fieldset>
+    <h3>Personal Information Portal </h3>
+  </fieldset>
   <form name="loginform" [formGroup]="loginform">
     <div class="form-group">
       <table class="table table-bordered">
         <tbody>
           <tr>
             <td colspan="2"><small>Username</small>
-              <input type="text" name="UserName" formControlName="UserName" class="form-control" required />
-              <!-- yet to implement -->
+              <input type="text" name="UserName" formControlName="UserName" class="form-control" [class.is-invalid]="loginform.get('UserName').invalid && loginform.get('UserName').untouched"
+                required />
+              <small [class.d-none]="loginform.get('UserName').valid || loginform.get('UserName').untouched" class="text-danger">Username
+                is required</small>
+
+
 
 
             </td>
@@ -14,7 +21,10 @@
           <tr>
             <td colspan="2">
               <small>Password</small>
-              <input type="text" name="Password" formControlName="Password" class="form-control" required />
+              <input type="text" name="Password" formControlName="Password" class="form-control" required
+                [class.is-invalid]="loginform.get('Password').invalid && loginform.get('Password').untouched" />
+              <small [class.d-none]="loginform.get('Password').valid || loginform.get('Password').untouched" class="text-danger">Password
+                is required</small>
             </td>
           </tr>
           <tr>

@@ -17,16 +17,25 @@
             </td>
           </tr>
           <td>
-            <input type="text" class="form-control" formControlName="fname" name="firstname" placeholder="First Name" />
-
+            <input type="text" class="form-control" formControlName="fname" name="firstname" placeholder="First Name"
+              [class.is-invalid]="addinfo.get('fname').invalid && addinfo.get('fname').untouched" required />
+            <small [class.d-none]="addinfo.get('fname').valid || addinfo.get('fname').untouched" class="text-danger">First
+              name
+              is required</small>
           </td>
           <td>
-            <input type="text" class="form-control" formControlName="mname" name="middlename" placeholder="Middle Name" />
-
+            <input type="text" class="form-control" formControlName="mname" name="middlename" placeholder="Middle Name"
+              [class.is-invalid]="addinfo.get('mname').invalid && addinfo.get('mname').untouched" required />
+            <small [class.d-none]="addinfo.get('mname').valid || addinfo.get('mname').untouched" class="text-danger">Middle
+              name
+              is required</small>
           </td>
           <td>
-            <input type="text" name="lastname" formControlName="lname" class="form-control" placeholder="Last Name" />
-
+            <input type="text" name="lastname" formControlName="lname" class="form-control" placeholder="Last Name"
+              [class.is-invalid]="addinfo.get('lname').invalid && addinfo.get('lname').untouched" required />
+            <small [class.d-none]="addinfo.get('lname').valid || addinfo.get('lname').untouched" class="text-danger">Last
+              name
+              is required</small>
           </td>
           <tr>
             <td>
@@ -49,23 +58,34 @@
             </td>
           </tr>
           <tr>
-            <td colspan="3"><input type="text" formControlName="addr1" name="addr1" class="form-control" placeholder="Address Line 1" />
-
+            <td colspan="3"><input type="text" formControlName="addr1" name="addr1" class="form-control" placeholder="Address Line 1"
+                [class.is-invalid]="addinfo.get('addr1').invalid && addinfo.get('addr1').untouched" required />
+              <small [class.d-none]="addinfo.get('addr1').valid || addinfo.get('addr1').untouched" class="text-danger">Address
+                line 1
+                is required</small>
             </td>
           </tr>
           <tr>
-            <td colspan="3"><input type="text" formControlName="addr2" name="addr2" class="form-control" placeholder="Address Line 2" />
-
+            <td colspan="3"><input type="text" formControlName="addr2" name="addr2" class="form-control" placeholder="Address Line 2"
+                [class.is-invalid]="addinfo.get('addr2').invalid && addinfo.get('addr2').untouched" required />
+              <small [class.d-none]="addinfo.get('addr2').valid || addinfo.get('addr2').untouched" class="text-danger">Address
+                line 2
+                is required</small>
             </td>
           </tr>
           <tr>
-            <td colspan="3"><input type="text" formControlName="addr3" name="addr3" class="form-control" placeholder="Address Line 3" />
-
+            <td colspan="3"><input type="text" formControlName="addr3" name="addr3" class="form-control" placeholder="Address Line 3"
+                [class.is-invalid]="addinfo.get('addr3').invalid && addinfo.get('addr3').untouched" required />
+              <small [class.d-none]="addinfo.get('addr3').valid || addinfo.get('addr3').untouched" class="text-danger">Address
+                line 3
+                is required</small>
             </td>
           </tr>
           <tr>
-            <td colspan="3"><input type="text" formControlName="city" name="city" class="form-control" placeholder="City" />
-
+            <td colspan="3"><input type="text" formControlName="city" name="city" class="form-control" placeholder="City"
+                [class.is-invalid]="addinfo.get('city').invalid && addinfo.get('city').untouched" required />
+              <small [class.d-none]="addinfo.get('city').valid || addinfo.get('city').untouched" class="text-danger">City
+                is required</small>
             </td>
           </tr>
           <tr>
@@ -78,8 +98,10 @@
               </select>
 
             </td>
-            <td colspan=1><input type="text" formControlName="pincode" name="pincode" class="form-control" placeholder="Pincode" />
-
+            <td colspan=1><input type="text" formControlName="pincode" name="pincode" class="form-control" placeholder="Pincode"
+                [class.is-invalid]="addinfo.get('pincode').invalid && addinfo.get('pincode').untouched" required />
+              <small [class.d-none]="addinfo.get('pincode').valid || addinfo.get('pincode').untouched" class="text-danger">Pincode
+                is required</small>
             </td>
 
           </tr>
@@ -87,8 +109,11 @@
             <td colspan="2"><input type="text" formControlName="phone" name="phone" placeholder="Phone" class="form-control" />
 
             </td>
-            <td><input type="text" name="mobile" formControlName="mobile" placeholder="Mobile" class="form-control" />
-
+            <td><input type="text" name="mobile" formControlName="mobile" placeholder="Mobile" class="form-control"
+                [class.is-invalid]="addinfo.get('mobile').invalid && addinfo.get('mobile').untouched" required />
+              <small [class.d-none]="addinfo.get('mobile').valid || addinfo.get('mobile').untouched" class="text-danger">Mobile
+                number
+                is required</small>
             </td>
           </tr>
           <tr>

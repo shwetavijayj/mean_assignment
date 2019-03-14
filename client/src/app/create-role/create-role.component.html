@@ -8,9 +8,11 @@
             <tr></tr>
             <tr>
               <td colspan="2"><small>Enter Role</small>
-                <input type="text" formControlName="roleName" name="roleName" class="form-control" />
+                <input type="text" formControlName="roleName" name="roleName" class="form-control" [class.is-invalid]="createUserRole.get('roleName').invalid && createUserRole.get('roleName').untouched"
+                  required />
+                <small [class.d-none]="createUserRole.get('roleName').valid || createUserRole.get('roleName').untouched"
+                  class="text-danger">Please enter user role.</small>
 
-                <!-- <small class="text-danger" [class.d-none]=""><b>Role name is already exist.</b></small> -->
               </td>
             </tr>
             <tr>

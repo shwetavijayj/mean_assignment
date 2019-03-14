@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -11,12 +11,22 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+
   loginform: FormGroup;
+  model: any = {};
   constructor(private serv: LoginService, private router: Router) {
     this.loginform = new FormGroup({
-      UserName: new FormControl(),
-      Password: new FormControl()
+      UserName: new FormControl(['', Validators.required]),
+      Password: new FormControl(['', Validators.required])
     })
+  }
+
+  get UserName() {
+    return this.loginform.get('UserName');
+  }
+
+  get Password() {
+    return this.loginform.get('Password');
   }
 
   ngOnInit() {

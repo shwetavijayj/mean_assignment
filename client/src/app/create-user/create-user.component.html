@@ -9,14 +9,20 @@
             <tr></tr>
             <tr>
               <td colspan="2"><small>Username</small>
-                <input type="text" formControlName="UserName" name="username" class="form-control" required />
-
+                <input type="text" formControlName="UserName" name="UserName" class="form-control" [class.is-invalid]="createUserform.get('UserName').invalid && createUserform.get('UserName').untouched"
+                  required />
+                <small [class.d-none]="createUserform.get('UserName').valid || createUserform.get('UserName').untouched"
+                  class="text-danger">Please enter username.</small>
               </td>
             </tr>
             <tr>
               <td colspan="2">
                 <small>Email</small>
-                <input type="email" formControlName="EmailAddress" name="email" class="form-control" />
+                <input type="email" formControlName="EmailAddress" name="EmailAddress" class="form-control"
+                  [class.is-invalid]="createUserform.get('EmailAddress').invalid && createUserform.get('EmailAddress').untouched"
+                  required />
+                <small [class.d-none]="createUserform.get('EmailAddress').valid || createUserform.get('EmailAddress').untouched"
+                  class="text-danger">Please enter email address.</small>
               </td>
             </tr>
             <tr>
