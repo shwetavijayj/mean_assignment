@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../services/admin.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -22,6 +22,17 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
+    this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+        this.router.navigated = false;
+        window.scrollTo(0, 0);
+      }
+    });
 
     this.serv.getPendingRequestData().subscribe(
       (resp: any) => {
@@ -60,7 +71,7 @@ export class UserListComponent implements OnInit {
     if (element.PersonalUniqueId) {
       this.serv.updateUser(element).subscribe(
         (resp: any) => {
-          this.router.navigateByUrl('userlist');
+          this.router.navigateByUrl('adminHomepage');
         },
         error => {
           this.router.navigateByUrl('error');
@@ -83,7 +94,7 @@ export class UserListComponent implements OnInit {
   reject(element) {
     this.serv.rejectData(element).subscribe(
       (resp: any) => {
-        this.router.navigateByUrl('userlist');
+        this.router.navigateByUrl('adminHomepage');
       },
       error => {
         this.router.navigateByUrl('error');

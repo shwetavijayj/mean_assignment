@@ -33,7 +33,7 @@
                   [(ngModel)]="Gender"></div>
               <div *ngIf="!isreadOnly">
                 <select name="Gender" class="form-control" formControlName="Gender">
-                  <option value="" selected disabled hidden>{{Gender}}</option>
+                  <option>{{Gender}}</option>
                   <option *ngFor="let val of Gender1">
                     {{val}}
                   </option>
@@ -84,7 +84,7 @@
                   [(ngModel)]="State"></div>
               <div *ngIf="!isreadOnly">
                 <select name="State" class="form-control" formControlName="State">
-                  <option value="" selected disabled hidden>{{State}}</option>
+                  <option>{{State}}</option>
                   <option *ngFor="let val of state">
                     {{val}}
                   </option>
@@ -124,7 +124,7 @@
               </div>
               <div *ngIf="!isreadOnly">
                 <select name="maritalstatus" class="form-control" formControlName="maritalstatus">
-                  <option value="" selected disabled hidden>{{maritalstatus}}</option>
+                  <option>{{maritalstatus}}</option>
                   <option *ngFor="let val of maritalstatus1">
                     {{val}}
                   </option>
@@ -141,7 +141,7 @@
                   [(ngModel)]="edustatus"></div>
               <div *ngIf="!isreadOnly">
                 <select name="edustatus" class="form-control" formControlName="edustatus">
-                  <option value="" selected disabled hidden>Educational Status</option>
+                  <option>{{edustatus}}</option>
                   <option *ngFor="let val of edustatus1">
                     {{val}}
                   </option>

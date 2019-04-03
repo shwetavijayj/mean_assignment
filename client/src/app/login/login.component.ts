@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -14,11 +14,8 @@ export class LoginComponent implements OnInit {
 
   loginform: FormGroup;
   model: any = {};
-  constructor(private serv: LoginService, private router: Router) {
-    this.loginform = new FormGroup({
-      UserName: new FormControl(['', Validators.required]),
-      Password: new FormControl(['', Validators.required])
-    })
+  constructor(private serv: LoginService, private router: Router, private formBuilder: FormBuilder) {
+
   }
 
   get UserName() {
@@ -30,6 +27,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loginform = this.formBuilder.group({
+      UserName: ['', Validators.required],
+      Password: ['', Validators.required]
+    });
   }
   login() {
     this.serv.authenticateUser(this.loginform.value).pipe(map(data => {
@@ -66,5 +67,8 @@ export class LoginComponent implements OnInit {
     })).subscribe();
 
   }
-
+  clear() {
+    this.loginform.controls['UserName'].setValue(' ');
+    this.loginform.controls['Password'].setValue(' ');
+  }
 }

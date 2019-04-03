@@ -1,34 +1,29 @@
 <div class="container col-sm-4">
-  <fieldset>
-    <h3>Personal Information Portal </h3>
-  </fieldset>
+
   <form name="loginform" [formGroup]="loginform">
-    <div class="form-group">
+    <fieldset class="form-style-5">
+      <h3>Personal Information Portal </h3>
+    </fieldset>
+    <div class="form-group form-style-5">
       <table class="table table-bordered">
         <tbody>
           <tr>
             <td colspan="2"><small>Username</small>
-              <input type="text" name="UserName" formControlName="UserName" class="form-control" [class.is-invalid]="loginform.get('UserName').invalid && loginform.get('UserName').untouched"
-                required />
+              <input type="text" formControlName="UserName" class="form-control" [class.is-invalid]="loginform.get('UserName').invalid && loginform.get('UserName').touched" />
               <small [class.d-none]="loginform.get('UserName').valid || loginform.get('UserName').untouched" class="text-danger">Username
                 is required</small>
-
-
-
-
             </td>
           </tr>
           <tr>
             <td colspan="2">
               <small>Password</small>
-              <input type="text" name="Password" formControlName="Password" class="form-control" required
-                [class.is-invalid]="loginform.get('Password').invalid && loginform.get('Password').untouched" />
+              <input type="password" formControlName="Password" class="form-control" [class.is-invalid]="loginform.get('Password').invalid && loginform.get('Password').touched" />
               <small [class.d-none]="loginform.get('Password').valid || loginform.get('Password').untouched" class="text-danger">Password
                 is required</small>
             </td>
           </tr>
           <tr>
-            <td><button type="submit" class="btn btn-warning">Clear</button></td>
+            <td><button type="submit" class="btn btn-warning" (click)="clear()">Clear</button></td>
             <td><button type="submit" class="btn btn-success" (click)="login()">Login</button></td>
           </tr>
         </tbody>

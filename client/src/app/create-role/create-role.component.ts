@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CreationService } from '../services/creation.service';
 import { AdminService } from '../services/admin.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,15 +13,17 @@ export class CreateRoleComponent implements OnInit {
   roleCount: any;
   createUserRole: FormGroup;
   userRole: any;
-  constructor(private serv: CreationService, private getServ: AdminService, private router: Router) {
-    this.createUserRole = new FormGroup({
-      roleName: new FormControl(['', Validators.required])
-    })
+  constructor(private formBuilder: FormBuilder, private serv: CreationService, private getServ: AdminService, private router: Router) {
+
   }
   get roleName() {
     return this.createUserRole.get('roleName');
   }
   ngOnInit() {
+
+    this.createUserRole = this.formBuilder.group({
+      roleName: ['', Validators.required]
+    });
 
     this.getServ.getAllUserRole().subscribe(
       (resp: any) => {
@@ -53,6 +55,9 @@ export class CreateRoleComponent implements OnInit {
       }
     )
   }
-
+  //to clear field values
+  clear() {
+    this.createUserRole.setValue({ 'roleName': ' ' });
+  }
 
 }

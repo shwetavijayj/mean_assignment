@@ -66,9 +66,13 @@ export class PersonalInfoDisplayComponent implements OnInit {
     let id = sessionStorage.getItem("UserId");
     this.serv.getUserData(id).subscribe(
       (resp: any) => {
-        this.personDetails = resp.data[0];
-        console.log("Personal details", this.personDetails);
+        this.personDetails = resp.data;
+        // console.log("Personal details", this.personDetails);
         if ((sessionStorage.getItem("PersonalUniqueId") === "null") && (sessionStorage.getItem("TempUser") === "1")) {
+          this.showMsg = "Your data is not yet approved by admin, you can edit your profile only after approval of current request."
+          this.editBtn = false;
+        }
+        else if (!(this.personDetails.hasOwnProperty('PersonalUniqueId')) && (sessionStorage.getItem("TempUser") === "1")) {
           this.showMsg = "Your data is not yet approved by admin, you can edit your profile only after approval of current request."
           this.editBtn = false;
         }
@@ -76,7 +80,12 @@ export class PersonalInfoDisplayComponent implements OnInit {
           this.showMsg = "Your change request is not yet approved by admin, you can edit your profile only after approval of current request.and your changed profile will be reflected soon.."
           this.editBtn = false;
         }
+        else if ((sessionStorage.getItem("PersonalUniqueId") != "null") && (sessionStorage.getItem("TempUser") === "1") && (this.personDetails.updateFlag === 1)) {
+          this.showMsg = "Your change request is not yet approved by admin, you can edit your profile only after approval of current request.and your changed profile will be reflected soon.."
+          this.editBtn = false;
+        }
         else {
+          //condition for PersonalUniqueId != null and TempUser = 1
           this.editBtn = true;
         }
         this.fname = this.personDetails.FullName.fname;

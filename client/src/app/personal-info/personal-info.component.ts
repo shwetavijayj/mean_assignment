@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { UserService } from '../services/user.service';
 
 import { Router } from '@angular/router';
@@ -21,7 +21,7 @@ export class PersonalInfoComponent implements OnInit {
   public state = Object.values(states);
   public age;
   public incomplete: Boolean;
-  constructor(private serv: UserService, private router: Router, private adminserv: AdminService) {
+  constructor(private formBuilder: FormBuilder, private serv: UserService, private router: Router, private adminserv: AdminService) {
     this.addinfo = new FormGroup({
       fname: new FormControl(['', Validators.required]),
       mname: new FormControl(['', Validators.required]),
@@ -42,6 +42,26 @@ export class PersonalInfoComponent implements OnInit {
       edustatus: new FormControl(),
       birthsign: new FormControl()
     })
+    this.addinfo = this.formBuilder.group({
+      fname: ['', Validators.required],
+      mname: ['', Validators.required],
+      lname: ['', Validators.required],
+      gender: [''],
+      dateofbirth: [''],
+      age: [''],
+      addr1: ['', Validators.required],
+      addr2: ['', Validators.required],
+      addr3: ['', Validators.required],
+      city: ['', Validators.required],
+      state1: [''],
+      pincode: ['', Validators.required],
+      phone: [''],
+      mobile: ['', Validators.required],
+      physicaldisability: [''],
+      maritalstatus: [''],
+      edustatus: [''],
+      birthsign: ['']
+    });
   }
   get fname() {
     return this.addinfo.get('fname');
@@ -141,5 +161,25 @@ export class PersonalInfoComponent implements OnInit {
     let age = yyyy - selectedDate.getFullYear();
     console.log("Age", age);
     this.age = age;
+  }
+  clear() {
+    this.addinfo.controls['fname'].setValue(' ');
+    this.addinfo.controls['mname'].setValue(' ');
+    this.addinfo.controls['lname'].setValue(' ');
+    this.addinfo.controls['gender'].setValue(' ');
+    this.addinfo.controls['dateofbirth'].setValue(' ');
+    this.addinfo.controls['age'].setValue(0);
+    this.addinfo.controls['addr1'].setValue(' ');
+    this.addinfo.controls['addr2'].setValue(' ');
+    this.addinfo.controls['addr3'].setValue(' ');
+    this.addinfo.controls['city'].setValue(' ');
+    this.addinfo.controls['state1'].setValue(' ');
+    this.addinfo.controls['pincode'].setValue(0);
+    this.addinfo.controls['phone'].setValue(0);
+    this.addinfo.controls['mobile'].setValue(0);
+    this.addinfo.controls['physicaldisability'].setValue(' ');
+    this.addinfo.controls['maritalstatus'].setValue(' ');
+    this.addinfo.controls['edustatus'].setValue(' ');
+    this.addinfo.controls['birthsign'].setValue(' ');
   }
 }

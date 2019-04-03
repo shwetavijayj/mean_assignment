@@ -99,6 +99,7 @@ router.get('/:id', function (req, res) {
           }
           else {
             if (res != null) {
+
               res.send({ 'data': resonse });
             }
             else {

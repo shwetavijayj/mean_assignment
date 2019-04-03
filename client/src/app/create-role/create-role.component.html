@@ -1,8 +1,8 @@
 <div class="container">
   <app-headers></app-headers>
-  <div class="col-sm-4">
+  <div class="col-sm-4" style="margin-left:350px">
     <form name="createUserRole" [formGroup]="createUserRole">
-      <div class="form-group">
+      <div class="form-group form-style-5">
         <table class="table table-bordered">
           <tbody>
             <tr></tr>
@@ -16,7 +16,7 @@
               </td>
             </tr>
             <tr>
-              <td><button type="submit" class="btn btn-warning">Clear</button></td>
+              <td><button type="submit" class="btn btn-warning" (click)=clear()>Clear</button></td>
               <td><button type="submit" class="btn btn-success" (click)="createRole()">Create Role</button></td>
             </tr>
           </tbody>
